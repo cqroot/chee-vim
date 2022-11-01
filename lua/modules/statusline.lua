@@ -45,7 +45,7 @@ function M.load()
 	-- require("bufferline").setup({})
 	require("bufferline").setup({
 		options = {
-			offsets = { { filetype = "NvimTree", text = " ", padding = 0 } },
+			offsets = { { filetype = "neo-tree", text = " ", padding = 0 } },
 			show_buffer_close_icons = false,
 			show_close_icon = false,
 			indicator = {

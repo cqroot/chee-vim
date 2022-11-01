@@ -13,11 +13,19 @@ function M.load()
 		use({ "dracula/vim", as = "dracula" })
 
 		use({
-			"nvim-tree/nvim-tree.lua",
+			"nvim-neo-tree/neo-tree.nvim",
+			branch = "v2.x",
 			requires = {
-				"nvim-tree/nvim-web-devicons",
+				"nvim-lua/plenary.nvim",
+				"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+				"MunifTanjim/nui.nvim",
 			},
-			tag = "nightly", -- optional, updated every week. (see issue #1193)
+			cmd = "NeoTreeShowToggle",
+			config = function()
+				-- Unless you are still migrating, remove the deprecated commands from v1.x
+				vim.g.neo_tree_remove_legacy_commands = 1
+				require("modules.sidebar").load_explorer()
+			end,
 		})
 		use({
 			"simrat39/symbols-outline.nvim",
@@ -62,8 +70,8 @@ function M.load()
 		-- ************************************************************************
 		-- *  Markdown                                                            *
 		-- ************************************************************************
-        use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview', ft = 'markdown' }
-        -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+		use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install", cmd = "MarkdownPreview", ft = "markdown" })
+		-- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 	end)
 end
 

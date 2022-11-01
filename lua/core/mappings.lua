@@ -18,7 +18,12 @@ function M.load()
 	vim.api.nvim_set_keymap("n", get_key("format"), ":Neoformat<CR>", { noremap = true, silent = true })
 
 	-- Sidebar
-	vim.api.nvim_set_keymap("n", get_key("toggle_explorer"), ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap(
+		"n",
+		get_key("toggle_explorer"),
+		":NeoTreeShowToggle<CR>",
+		{ noremap = true, silent = true }
+	)
 	vim.api.nvim_set_keymap("n", get_key("toggle_outline"), ":SymbolsOutline<CR>", { noremap = true, silent = true })
 
 	-- Git
