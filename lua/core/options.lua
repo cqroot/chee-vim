@@ -23,7 +23,7 @@ function M.load()
 		nbsp = "·",
 		eol = "↴",
 	}
-    vim.opt.completeopt = { "menu", "menuone", "noselect" }
+	vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 	pcall(vim.cmd.colorscheme, require("core.utils").get("colorscheme"))
 end
