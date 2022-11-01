@@ -1,6 +1,6 @@
 local M = {}
 
-get_option = require("core.utils").get
+local get_option = require("core.utils").get
 
 function M.load()
 	require("gitsigns").setup({

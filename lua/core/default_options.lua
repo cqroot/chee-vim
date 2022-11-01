@@ -1,5 +1,9 @@
 return {
 	colorscheme = "dracula",
+
+	editor_relativenumber = false,
+	editor_cursorcolumn = false,
+
 	format_on_save = false,
 	git_current_line_blame = false,
 
