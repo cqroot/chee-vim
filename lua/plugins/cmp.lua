@@ -96,6 +96,12 @@ function M.load()
 	})
 
 	require("plugins.lsp").load()
+
+	vim.api.nvim_create_autocmd({ "FileType markdown" }, {
+		callback = function()
+			require("cmp").setup.buffer({ enabled = false })
+		end,
+	})
 end
 
 return M
