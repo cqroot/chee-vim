@@ -6,7 +6,7 @@ function M.load()
 	-- Only required if you have packer configured as `opt`
 	vim.cmd([[packadd packer.nvim]])
 
-	return require("packer").startup(function(use)
+	require("packer").startup(function(use)
 		-- Packer can manage itself
 		use("wbthomason/packer.nvim")
 
@@ -20,7 +20,7 @@ function M.load()
 				"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
 				"MunifTanjim/nui.nvim",
 			},
-			cmd = "NeoTreeShowToggle",
+			cmd = "Neotree",
 			config = function()
 				-- Unless you are still migrating, remove the deprecated commands from v1.x
 				vim.g.neo_tree_remove_legacy_commands = 1
@@ -104,11 +104,22 @@ function M.load()
 			cmd = "MarkdownPreview",
 			ft = "markdown",
 			config = function()
-				require("plugins.markdown-preview")
+				require("plugins.markdown-preview").load()
 			end,
 		})
-		-- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+		-- ************************************************************************
+		-- *  Others                                                              *
+		-- ************************************************************************
+		use({
+			"karb94/neoscroll.nvim",
+			config = function()
+				require("neoscroll").setup()
+			end,
+		})
 	end)
+
+	require("plugins.cmp").load()
 end
 
 return M

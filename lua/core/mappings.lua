@@ -1,37 +1,42 @@
 local M = {}
 
 function M.load()
+	local opts = { noremap = true, silent = true }
 	local get_key = require("core.utils").get_key
 
-	-- Window
-	vim.api.nvim_set_keymap("n", get_key("win_left"), "<C-w>h", { noremap = true, silent = true })
-	vim.api.nvim_set_keymap("n", get_key("win_down"), "<C-w>j", { noremap = true, silent = true })
-	vim.api.nvim_set_keymap("n", get_key("win_up"), "<C-w>k", { noremap = true, silent = true })
-	vim.api.nvim_set_keymap("n", get_key("win_right"), "<C-w>l", { noremap = true, silent = true })
+	local nmaps = {
+		-- Window
+		win_left = "<C-w>h",
+		win_down = "<C-w>j",
+		win_up = "<C-w>k",
+		win_right = "<C-w>l",
+		-- Buffer
+		buf_close = ":bp|bd #<CR>",
+		buf_prev = ":bp!<CR>",
+		buf_next = ":bn!<CR>",
+		-- Format
+		format = ":Neoformat<CR>",
+		-- Sidebar
+		toggle_explorer = ":Neotree toggle<CR>",
+		toggle_outline = ":SymbolsOutline<CR>",
+		-- Git
+		git_diff = ":Gitsigns diffthis<CR>",
+		-- Comment
+		comment = "<Plug>NERDCommenterToggle",
+	}
 
-	-- Buffer
-	vim.api.nvim_set_keymap("n", get_key("buf_close"), ":bp|bd #<CR>", { noremap = true, silent = true })
-	vim.api.nvim_set_keymap("n", get_key("buf_prev"), ":bp!<CR>", { noremap = true, silent = true })
-	vim.api.nvim_set_keymap("n", get_key("buf_next"), ":bn!<CR>", { noremap = true, silent = true })
+	local xmaps = {
+		-- Comment
+		comment = "<Plug>NERDCommenterToggle",
+	}
 
-	-- Format
-	vim.api.nvim_set_keymap("n", get_key("format"), ":Neoformat<CR>", { noremap = true, silent = true })
+	for k, v in pairs(nmaps) do
+		vim.api.nvim_set_keymap("n", get_key(k), v, opts)
+	end
 
-	-- Sidebar
-	vim.api.nvim_set_keymap(
-		"n",
-		get_key("toggle_explorer"),
-		":NeoTreeShowToggle<CR>",
-		{ noremap = true, silent = true }
-	)
-	vim.api.nvim_set_keymap("n", get_key("toggle_outline"), ":SymbolsOutline<CR>", { noremap = true, silent = true })
-
-	-- Git
-	vim.api.nvim_set_keymap("n", get_key("git_diff"), ":Gitsigns diffthis<CR>", { noremap = true, silent = true })
-
-	-- Comment
-	vim.api.nvim_set_keymap("n", get_key("comment"), "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
-	vim.api.nvim_set_keymap("x", get_key("comment"), "<Plug>NERDCommenterToggle", { noremap = true, silent = true })
+	for k, v in pairs(xmaps) do
+		vim.api.nvim_set_keymap("x", get_key(k), v, opts)
+	end
 end
 
 return M

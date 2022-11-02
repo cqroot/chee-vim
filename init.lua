@@ -6,5 +6,3 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 require("core.options").load()
 require("core.mappings").load()
 require("plugins").load()
-
-require("plugins.completion").load()
