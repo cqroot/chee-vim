@@ -1,10 +1,6 @@
 local M = {}
 
 function M.load()
-	vim.cmd("autocmd BufEnter * if (winnr(\"$\") == 1 && &filetype == 'Outline') | q | endif")
-end
-
-function M.load_explorer()
 	require("neo-tree").setup({
 		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 		window = {

@@ -24,26 +24,54 @@ function M.load()
 			config = function()
 				-- Unless you are still migrating, remove the deprecated commands from v1.x
 				vim.g.neo_tree_remove_legacy_commands = 1
-				require("modules.sidebar").load_explorer()
+				require("plugins.neo-tree").load()
 			end,
 		})
 		use({
 			"simrat39/symbols-outline.nvim",
 			cmd = "SymbolsOutline",
 			config = function()
-				require("symbols-outline").setup()
+				require("plugins.symbols-outline").load()
 			end,
 		})
-		use({ "hoob3rt/lualine.nvim" })
-		use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
+		use({
+			"stevearc/aerial.nvim",
+			cmd = "AerialToggle",
+			config = function()
+				require("aerial").setup()
+			end,
+		})
+		use({
+			"hoob3rt/lualine.nvim",
+			config = function()
+				require("plugins.lualine").load()
+			end,
+		})
+		use({
+			"akinsho/bufferline.nvim",
+			requires = "kyazdani42/nvim-web-devicons",
+			config = function()
+				require("plugins.bufferline").load()
+			end,
+		})
 
 		use({ "sbdchd/neoformat", cmd = "Neoformat" })
-		use({ "preservim/nerdcommenter" })
+		use({
+			"preservim/nerdcommenter",
+			config = function()
+				require("plugins.nerdcommenter").load()
+			end,
+		})
 
 		-- ************************************************************************
 		-- *  Git                                                                 *
 		-- ************************************************************************
-		use({ "lewis6991/gitsigns.nvim" })
+		use({
+			"lewis6991/gitsigns.nvim",
+			config = function()
+				require("plugins.gitsigns").load()
+			end,
+		})
 
 		-- ************************************************************************
 		-- *  Completion                                                          *
@@ -70,7 +98,15 @@ function M.load()
 		-- ************************************************************************
 		-- *  Markdown                                                            *
 		-- ************************************************************************
-		use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install", cmd = "MarkdownPreview", ft = "markdown" })
+		use({
+			"iamcco/markdown-preview.nvim",
+			run = "cd app && yarn install",
+			cmd = "MarkdownPreview",
+			ft = "markdown",
+			config = function()
+				require("plugins.markdown-preview")
+			end,
+		})
 		-- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 	end)
 end

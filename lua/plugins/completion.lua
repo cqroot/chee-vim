@@ -1,5 +1,8 @@
 local M = {}
 
+-- local border_opts =
+--     { border = "single", winhighlight = "Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None" }
+
 function M.load()
 	local has_words_before = function()
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -23,8 +26,8 @@ function M.load()
 			end,
 		},
 		window = {
-			-- completion = cmp.config.window.bordered(),
-			-- documentation = cmp.config.window.bordered(),
+			completion = cmp.config.window.bordered(),
+			documentation = cmp.config.window.bordered(),
 		},
 		preselect = cmp.PreselectMode.None,
 		mapping = cmp.mapping.preset.insert({
@@ -92,7 +95,7 @@ function M.load()
 		}),
 	})
 
-	require("modules.lsp").load()
+	require("plugins.lsp").load()
 end
 
 return M
