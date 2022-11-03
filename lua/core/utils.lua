@@ -25,7 +25,7 @@ function M.get_key(action)
 		end
 	end
 
-	return require("core.default_keys")[action]
+	return nil
 end
 
 return M

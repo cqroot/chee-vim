@@ -31,11 +31,17 @@ function M.load()
 	}
 
 	for k, v in pairs(nmaps) do
-		vim.api.nvim_set_keymap("n", get_key(k), v, opts)
+		local key = get_key(k)
+		if key ~= nil and key ~= "" then
+			vim.api.nvim_set_keymap("n", get_key(k), v, opts)
+		end
 	end
 
 	for k, v in pairs(xmaps) do
-		vim.api.nvim_set_keymap("x", get_key(k), v, opts)
+		local key = get_key(k)
+		if key ~= nil and key ~= "" then
+			vim.api.nvim_set_keymap("x", get_key(k), v, opts)
+		end
 	end
 end
 

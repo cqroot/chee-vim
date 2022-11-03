@@ -3,9 +3,6 @@ local M = {}
 function M.load()
 	-- Set up lspconfig.
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-	require("luasnip.loaders.from_vscode").lazy_load()
-
 	local is_enabled = require("core.utils").is_enabled
 
 	if is_enabled("go") then

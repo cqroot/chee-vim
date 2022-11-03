@@ -95,6 +95,7 @@ function M.load()
 		}),
 	})
 
+	require("luasnip.loaders.from_vscode").lazy_load()
 	require("plugins.lsp").load()
 
 	vim.api.nvim_create_autocmd({ "FileType markdown" }, {
