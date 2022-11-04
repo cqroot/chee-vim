@@ -6,6 +6,7 @@ return {
 
 	format_on_save = false,
 	git_current_line_blame = false,
+	markdown_preview_browser = "surf",
 
 	-- Language
 	lang_enable_go = false,
