@@ -30,7 +30,7 @@ function M.load()
 	}
 	vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
-	pcall(vim.cmd.colorscheme, require("core.utils").get("colorscheme"))
+	pcall(vim.cmd, "colorscheme " .. require("core.utils").get("colorscheme"))
 end
 
 return M
