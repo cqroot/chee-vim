@@ -6,7 +6,7 @@ function M.load()
 	-- Only required if you have packer configured as `opt`
 	vim.cmd([[packadd packer.nvim]])
 
-	require("packer").startup(function(use)
+	return require("packer").startup(function(use)
 		-- Packer can manage itself
 		use("wbthomason/packer.nvim")
 
@@ -118,8 +118,6 @@ function M.load()
 			end,
 		})
 	end)
-
-	require("plugins.cmp").load()
 end
 
 return M
