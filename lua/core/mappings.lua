@@ -6,23 +6,21 @@ function M.load()
 
 	local nmaps = {
 		-- Core
-		source_rc = ":luafile $MYVIMRC<CR>",
-		-- Window
-		win_left = "<C-w>h",
-		win_down = "<C-w>j",
-		win_up = "<C-w>k",
-		win_right = "<C-w>l",
+		source_rc = "<cmd>luafile $MYVIMRC<cr>",
+		show_menu = require("core.menu").show_menu,
 		-- Buffer
-		buf_close = ":bp|bd #<CR>",
-		buf_prev = ":bp!<CR>",
-		buf_next = ":bn!<CR>",
+		buf_close = "<cmd>bp|bd #<cr>",
+		buf_prev = "<cmd>bp!<cr>",
+		buf_next = "<cmd>bn!<cr>",
 		-- Format
-		format = ":Neoformat<CR>",
+		format = function()
+			vim.lsp.buf.format({ bufnr = bufnr })
+		end,
 		-- Sidebar
-		toggle_explorer = ":Neotree toggle<CR>",
-		toggle_outline = ":AerialToggle<CR>",
+		toggle_explorer = "<cmd>Neotree toggle<cr>",
+		toggle_outline = "<cmd>AerialToggle<cr>",
 		-- Git
-		git_diff = ":Gitsigns diffthis<CR>",
+		git_diff = "<cmd>Gitsigns diffthis<cr>",
 		-- Comment
 		comment = "<Plug>NERDCommenterToggle",
 	}
@@ -35,18 +33,16 @@ function M.load()
 	for k, v in pairs(nmaps) do
 		local key = get_key(k)
 		if key ~= nil and key ~= "" then
-			vim.api.nvim_set_keymap("n", get_key(k), v, opts)
+			vim.keymap.set("n", key, v, opts)
 		end
 	end
 
 	for k, v in pairs(xmaps) do
 		local key = get_key(k)
 		if key ~= nil and key ~= "" then
-			vim.api.nvim_set_keymap("x", get_key(k), v, opts)
+			vim.keymap.set("x", key, v, opts)
 		end
 	end
-
-	vim.keymap.set("n", "<M-p>", require("core.menu").show_menu, opts)
 end
 
 return M

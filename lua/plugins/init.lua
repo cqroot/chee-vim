@@ -53,7 +53,13 @@ function M.load()
 			end,
 		})
 
-		use({ "sbdchd/neoformat", cmd = "Neoformat" })
+		use({
+			"jose-elias-alvarez/null-ls.nvim",
+			requires = { "nvim-lua/plenary.nvim" },
+			config = function()
+				require("plugins.null-ls").load()
+			end,
+		})
 		use({
 			"preservim/nerdcommenter",
 			config = function()
@@ -80,6 +86,7 @@ function M.load()
 		use({ "hrsh7th/cmp-path" })
 		use({ "hrsh7th/cmp-cmdline" })
 		use({ "hrsh7th/nvim-cmp" })
+		use({ "onsails/lspkind.nvim" })
 
 		-- For luasnip users.
 		use({ "L3MON4D3/LuaSnip" })

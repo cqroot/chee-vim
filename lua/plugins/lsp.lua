@@ -12,7 +12,6 @@ function M.load()
 	end
 
 	if is_enabled("lua") then
-		vim.g.neoformat_enabled_lua = { "stylua" }
 		require("lspconfig").sumneko_lua.setup({
 			capabilities = capabilities,
 			settings = {
@@ -38,25 +37,10 @@ function M.load()
 		})
 	end
 
-	if is_enabled("markdown") then
-		vim.g.neoformat_enabled_markdown = { "prettier" }
-	end
 	if is_enabled("python") then
 		require("lspconfig").pyright.setup({
 			capabilities = capabilities,
 		})
-	end
-
-	if require("core.utils").get("format_on_save") then
-		vim.api.nvim_exec(
-			[[
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
-]],
-			true
-		)
 	end
 end
 
