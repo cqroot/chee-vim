@@ -1,6 +1,9 @@
 local M = {}
 
 function M.load()
+	-- Unless you are still migrating, remove the deprecated commands from v1.x
+	vim.g.neo_tree_remove_legacy_commands = 1
+
 	require("neo-tree").setup({
 		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 		window = {

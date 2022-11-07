@@ -22,8 +22,6 @@ function M.load()
 			},
 			cmd = "Neotree",
 			config = function()
-				-- Unless you are still migrating, remove the deprecated commands from v1.x
-				vim.g.neo_tree_remove_legacy_commands = 1
 				require("plugins.neo-tree").load()
 			end,
 		})
@@ -38,7 +36,7 @@ function M.load()
 			"stevearc/aerial.nvim",
 			cmd = "AerialToggle",
 			config = function()
-				require("aerial").setup()
+				require("plugins.aerial").load()
 			end,
 		})
 		use({
@@ -78,7 +76,7 @@ function M.load()
 		-- ************************************************************************
 		use({ "neovim/nvim-lspconfig" }) -- Configurations for Nvim LSP
 		use({ "hrsh7th/cmp-nvim-lsp" })
-		use({ "hrsh7th/cmp-buffer" })
+		-- use({ "hrsh7th/cmp-buffer" })
 		use({ "hrsh7th/cmp-path" })
 		use({ "hrsh7th/cmp-cmdline" })
 		use({ "hrsh7th/nvim-cmp" })
@@ -106,6 +104,13 @@ function M.load()
 			config = function()
 				require("plugins.markdown-preview").load()
 			end,
+			setup = function()
+				vim.g.mkdp_filetypes = { "markdown" }
+			end,
+		})
+		use({
+			"dkarter/bullets.vim",
+			ft = "markdown",
 		})
 
 		-- ************************************************************************
