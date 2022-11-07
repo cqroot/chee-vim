@@ -5,6 +5,8 @@ function M.load()
 	local get_key = require("core.utils").get_key
 
 	local nmaps = {
+		-- Core
+		source_rc = ":luafile $MYVIMRC<CR>",
 		-- Window
 		win_left = "<C-w>h",
 		win_down = "<C-w>j",
@@ -18,7 +20,7 @@ function M.load()
 		format = ":Neoformat<CR>",
 		-- Sidebar
 		toggle_explorer = ":Neotree toggle<CR>",
-		toggle_outline = ":SymbolsOutline<CR>",
+		toggle_outline = ":AerialToggle<CR>",
 		-- Git
 		git_diff = ":Gitsigns diffthis<CR>",
 		-- Comment
@@ -43,6 +45,8 @@ function M.load()
 			vim.api.nvim_set_keymap("x", get_key(k), v, opts)
 		end
 	end
+
+	vim.keymap.set("n", "<M-p>", require("core.menu").show_menu, opts)
 end
 
 return M
