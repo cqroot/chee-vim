@@ -7,6 +7,10 @@ function M.load()
 	vim.opt.ignorecase = true
 	vim.opt.wildignorecase = true
 
+    vim.opt.backup = false
+    vim.opt.writebackup = false
+    vim.opt.swapfile = false
+
 	vim.opt.expandtab = true
 	vim.opt.smarttab = true
 	vim.opt.smartindent = true
