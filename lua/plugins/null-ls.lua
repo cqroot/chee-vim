@@ -19,6 +19,7 @@ function M.load()
 			end
 		end,
 		sources = {
+			null_ls.builtins.formatting.shfmt,
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.prettier,
 		},

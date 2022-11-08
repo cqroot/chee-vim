@@ -25,6 +25,7 @@ function M.load()
 	vim.opt.cursorline = true
 	vim.opt.cursorcolumn = get_option("editor_cursorcolumn")
 
+    vim.opt.conceallevel = 0
 	vim.opt.list = true
 	vim.opt.listchars = {
 		tab = "»·",

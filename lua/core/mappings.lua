@@ -27,7 +27,7 @@ function M.load()
 
 	local xmaps = {
 		-- Comment
-		comment = "<Plug>NERDCommenterToggle",
+		buf_comment = "<Plug>NERDCommenterToggle",
 	}
 
 	for k, v in pairs(nmaps) do
