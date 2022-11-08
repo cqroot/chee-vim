@@ -40,6 +40,13 @@ function M.load()
 			end,
 		})
 		use({
+			"nvim-telescope/telescope.nvim",
+			requires = { { "nvim-lua/plenary.nvim" } },
+			config = function()
+				require("plugins.telescope").load()
+			end,
+		})
+		use({
 			"hoob3rt/lualine.nvim",
 			config = function()
 				require("plugins.lualine").load()

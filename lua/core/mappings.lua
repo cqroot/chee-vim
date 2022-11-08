@@ -5,24 +5,24 @@ function M.load()
 	local get_key = require("core.utils").get_key
 
 	local nmaps = {
-		-- Core
-		source_rc = "<cmd>luafile $MYVIMRC<cr>",
-		show_menu = require("core.menu").show_menu,
 		-- Buffer
 		buf_close = "<cmd>bp|bd #<cr>",
 		buf_prev = "<cmd>bp!<cr>",
 		buf_next = "<cmd>bn!<cr>",
-		-- Format
-		format = function()
+		buf_format = function()
 			vim.lsp.buf.format({ bufnr = bufnr })
 		end,
+		buf_git_diff = "<cmd>Gitsigns diffthis<cr>",
+		buf_comment = "<Plug>NERDCommenterToggle",
+
+		-- Core
+		source_rc = "<cmd>luafile $MYVIMRC<cr>",
+		show_menu = require("core.menu").show_menu,
 		-- Sidebar
 		toggle_explorer = "<cmd>Neotree toggle<cr>",
 		toggle_outline = "<cmd>AerialToggle<cr>",
-		-- Git
-		git_diff = "<cmd>Gitsigns diffthis<cr>",
-		-- Comment
-		comment = "<Plug>NERDCommenterToggle",
+		find_files = require("telescope.builtin").find_files,
+		live_grep = require("telescope.builtin").live_grep,
 	}
 
 	local xmaps = {
