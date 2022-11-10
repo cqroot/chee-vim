@@ -6,6 +6,10 @@ function M.load()
 
 	require("neo-tree").setup({
 		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+		source_selector = {
+			winbar = true,
+			statusline = false,
+		},
 		window = {
 			position = "left",
 			width = 40,
