@@ -15,3 +15,5 @@ for pkg, _ in pairs(package.loaded) do
 end
 
 require("cheevim").init()
+
+vim.cmd("command SudoWrite :execute ':silent w !sudo tee % > /dev/null' | :edit!")
