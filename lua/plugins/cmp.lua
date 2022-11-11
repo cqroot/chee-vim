@@ -10,6 +10,7 @@ function M.load()
 	end
 
 	local luasnip = require("luasnip")
+	local lspkind = require("lspkind")
 	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 	-- Set up nvim-cmp.
 	local cmp = require("cmp")
@@ -36,11 +37,25 @@ function M.load()
 			["<C-Space>"] = cmp.mapping.complete(),
 			["<C-e>"] = cmp.mapping.abort(),
 			["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+			["<C-j>"] = cmp.mapping(function(fallback)
+				if luasnip.expand_or_jumpable() then
+					luasnip.expand_or_jump()
+				else
+					fallback()
+				end
+			end),
+			["<C-k>"] = cmp.mapping(function(fallback)
+				if luasnip.jumpable(-1) then
+					luasnip.jump(-1)
+				else
+					fallback()
+				end
+			end),
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
-				elseif luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
+				elseif luasnip.expandable() then
+					luasnip.expand({})
 				elseif has_words_before() then
 					cmp.complete()
 				else
@@ -50,8 +65,6 @@ function M.load()
 			["<S-Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
-				elseif luasnip.jumpable(-1) then
-					luasnip.jump(-1)
 				else
 					fallback()
 				end
@@ -66,6 +79,56 @@ function M.load()
 		}, {
 			{ name = "buffer" },
 		}),
+		formatting = {
+			format = lspkind.cmp_format({
+				mode = "symbol",
+				symbol_map = {
+					-- NONE = "",
+					-- Array = "",
+					-- Boolean = "⊨",
+					-- Class = "",
+					-- Constructor = "",
+					-- Key = "",
+					-- Namespace = "",
+					-- Null = "NULL",
+					-- Number = "#",
+					-- Object = "⦿",
+					-- Package = "",
+					-- Property = "",
+					-- Reference = "",
+					-- Snippet = "",
+					-- String = "𝓐",
+					-- TypeParameter = "",
+					-- Unit = "",
+
+					Text = "",
+					Method = "",
+					Function = "",
+					Constructor = "",
+					Field = "ﰠ",
+					Variable = "",
+					Class = "ﴯ",
+					Interface = "",
+					Module = "",
+					Property = "ﰠ",
+					Unit = "塞",
+					Value = "",
+					Enum = "",
+					Keyword = "",
+					Snippet = "",
+					Color = "",
+					File = "",
+					Reference = "",
+					Folder = "",
+					EnumMember = "",
+					Constant = "",
+					Struct = "פּ",
+					Event = "",
+					Operator = "",
+					TypeParameter = "",
+				},
+			}),
+		},
 	})
 
 	-- -- Set configuration for specific filetype.
@@ -96,13 +159,7 @@ function M.load()
 	})
 
 	require("luasnip.loaders.from_vscode").lazy_load()
-	require("plugins.lsp").load()
-
-	vim.api.nvim_create_autocmd({ "FileType markdown" }, {
-		callback = function()
-			require("cmp").setup.buffer({ enabled = false })
-		end,
-	})
+	require("plugins.lspconfig").load()
 end
 
 return M
