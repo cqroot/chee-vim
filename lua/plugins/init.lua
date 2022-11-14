@@ -47,7 +47,7 @@ function M.load()
 			end,
 		})
 		use({
-			"hoob3rt/lualine.nvim",
+			"nvim-lualine/lualine.nvim",
 			config = function()
 				require("plugins.lualine").load()
 			end,
@@ -125,6 +125,19 @@ function M.load()
 		use({
 			"dkarter/bullets.vim",
 			ft = "markdown",
+		})
+		use({
+			"preservim/vim-markdown",
+			ft = "markdown",
+			requires = {
+				"godlygeek/tabular",
+			},
+			config = function()
+				vim.g.vim_markdown_folding_disabled = 1
+				-- vim.g.vim_markdown_folding_style_pythonic = 1
+				vim.g.vim_markdown_math = 1
+				vim.g.vim_markdown_auto_insert_bullets = 0
+			end,
 		})
 
 		-- ************************************************************************
