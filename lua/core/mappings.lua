@@ -4,7 +4,7 @@ function M.load()
 	local opts = { noremap = true, silent = true }
 	local get_key = require("core.utils").get_key
 
-	local nmaps = {
+	local nxmaps = {
 		-- Buffer
 		buf_close = "<cmd>bp|bd #<cr>",
 		buf_prev = "<cmd>bp!<cr>",
@@ -30,10 +30,10 @@ function M.load()
 		buf_comment = "<Plug>NERDCommenterToggle",
 	}
 
-	for k, v in pairs(nmaps) do
+	for k, v in pairs(nxmaps) do
 		local key = get_key(k)
 		if key ~= nil and key ~= "" then
-			vim.keymap.set("n", key, v, opts)
+			vim.keymap.set({ "n", "v" }, key, v, opts)
 		end
 	end
 
