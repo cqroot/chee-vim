@@ -12,16 +12,4 @@ function M.get(option)
 	return require("core.default_options")[option]
 end
 
-function M.get_key(action)
-	local ok, _ = pcall(require, "custom_keys")
-	if ok then
-		local key = require("custom_keys")[action]
-		if key ~= nil then
-			return key
-		end
-	end
-
-	return nil
-end
-
 return M

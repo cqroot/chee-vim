@@ -2,47 +2,36 @@ local M = {}
 
 function M.load()
 	local opts = { noremap = true, silent = true }
-	local get_key = require("core.utils").get_key
+    vim.g.mapleader = ";"
 
-	local nxmaps = {
-		-- Buffer
-		buf_close = "<cmd>bp|bd #<cr>",
-		buf_prev = "<cmd>bp!<cr>",
-		buf_next = "<cmd>bn!<cr>",
-		buf_format = function()
-			vim.lsp.buf.format({ bufnr = bufnr })
-		end,
-		buf_git_diff = "<cmd>Gitsigns diffthis<cr>",
-		buf_comment = "<Plug>NERDCommenterToggle",
+	-- ************************************************************************
+	-- * Navigation                                                           *
+	-- ************************************************************************
+	vim.keymap.set("n", "<M-h>", "<CMD>NavigatorLeft<CR>")
+	vim.keymap.set("n", "<M-l>", "<CMD>NavigatorRight<CR>")
+	vim.keymap.set("n", "<M-k>", "<CMD>NavigatorUp<CR>")
+	vim.keymap.set("n", "<M-j>", "<CMD>NavigatorDown<CR>")
+	vim.keymap.set("n", "<M-p>", "<CMD>NavigatorPrevious<CR>")
 
-		-- Core
-		source_rc = "<cmd>luafile $MYVIMRC<cr>",
-		show_menu = require("core.menu").show_menu,
-		-- Sidebar
-		toggle_explorer = "<cmd>Neotree toggle<cr>",
-		toggle_outline = "<cmd>AerialToggle<cr>",
-		find_files = require("telescope.builtin").find_files,
-		live_grep = require("telescope.builtin").live_grep,
-	}
+	-- ************************************************************************
+	-- * Buffer                                                           *
+	-- ************************************************************************
+	vim.keymap.set({ "n", "v" }, "J", "<cmd>bp|bd #<cr>", opts)
+	vim.keymap.set({ "n", "v" }, "K", "<cmd>bp!<cr>", opts)
+	vim.keymap.set({ "n", "v" }, "<M-w>", "<cmd>bn!<cr>", opts)
+	vim.keymap.set({ "n", "v" }, "<C-_>", "<Plug>NERDCommenterToggle", opts)
+	vim.keymap.set({ "n", "v" }, "<leader>w", function()
+		vim.lsp.buf.format()
+	end, opts)
 
-	local xmaps = {
-		-- Comment
-		buf_comment = "<Plug>NERDCommenterToggle",
-	}
-
-	for k, v in pairs(nxmaps) do
-		local key = get_key(k)
-		if key ~= nil and key ~= "" then
-			vim.keymap.set({ "n", "v" }, key, v, opts)
-		end
-	end
-
-	for k, v in pairs(xmaps) do
-		local key = get_key(k)
-		if key ~= nil and key ~= "" then
-			vim.keymap.set("x", key, v, opts)
-		end
-	end
+	-- ************************************************************************
+	-- * Others                                                               *
+	-- ************************************************************************
+	vim.keymap.set({ "n", "v" }, "<leader>t", "<cmd>Neotree toggle<cr>", opts)
+	vim.keymap.set({ "n", "v" }, "<leader>a", "<cmd>AerialToggle<cr>", opts)
+    vim.keymap.set({ "n", "v" }, "<leader>s", require("telescope.builtin").find_files, opts)
+    vim.keymap.set({ "n", "v" }, "<leader>f", require("telescope.builtin").live_grep, opts)
+    vim.keymap.set({ "n", "v" }, "<leader>.", "<cmd>luafile $MYVIMRC<cr>", opts)
 end
 
 return M
