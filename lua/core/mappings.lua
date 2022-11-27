@@ -2,7 +2,7 @@ local M = {}
 
 function M.load()
 	local opts = { noremap = true, silent = true }
-    vim.g.mapleader = ";"
+	vim.g.mapleader = ";"
 
 	-- ************************************************************************
 	-- * Navigation                                                           *
@@ -16,22 +16,23 @@ function M.load()
 	-- ************************************************************************
 	-- * Buffer                                                           *
 	-- ************************************************************************
-	vim.keymap.set({ "n", "v" }, "J", "<cmd>bp|bd #<cr>", opts)
-	vim.keymap.set({ "n", "v" }, "K", "<cmd>bp!<cr>", opts)
-	vim.keymap.set({ "n", "v" }, "<M-w>", "<cmd>bn!<cr>", opts)
+	vim.keymap.set({ "n", "v" }, "J", "<cmd>bp!<cr>", opts)
+	vim.keymap.set({ "n", "v" }, "K", "<cmd>bn!<cr>", opts)
+	vim.keymap.set({ "n", "v" }, "<M-w>", "<cmd>bp|bd #<cr>", opts)
+	vim.keymap.set({ "n", "v" }, "<M-a>", vim.lsp.buf.format, opts)
 	vim.keymap.set({ "n", "v" }, "<C-_>", "<Plug>NERDCommenterToggle", opts)
-	vim.keymap.set({ "n", "v" }, "<leader>w", function()
-		vim.lsp.buf.format()
-	end, opts)
 
 	-- ************************************************************************
 	-- * Others                                                               *
 	-- ************************************************************************
-	vim.keymap.set({ "n", "v" }, "<leader>t", "<cmd>Neotree toggle<cr>", opts)
-	vim.keymap.set({ "n", "v" }, "<leader>a", "<cmd>AerialToggle<cr>", opts)
-    vim.keymap.set({ "n", "v" }, "<leader>s", require("telescope.builtin").find_files, opts)
-    vim.keymap.set({ "n", "v" }, "<leader>f", require("telescope.builtin").live_grep, opts)
-    vim.keymap.set({ "n", "v" }, "<leader>.", "<cmd>luafile $MYVIMRC<cr>", opts)
+	vim.keymap.set({ "n", "v" }, "<leader>q", "<cmd>Neotree toggle<cr>", opts)
+	-- vim.keymap.set({ "n", "v" }, "<leader>w", "<cmd>AerialToggle<cr>", opts)
+	vim.keymap.set({ "n", "v" }, "<leader>w", "<cmd>SymbolsOutline<cr>", opts)
+	vim.keymap.set({ "n", "v" }, "<leader>e", "<cmd>Gitsigns diffthis<cr>", opts)
+
+	vim.keymap.set({ "n", "v" }, "<leader>s", require("telescope.builtin").find_files, opts)
+	vim.keymap.set({ "n", "v" }, "<leader>f", require("telescope.builtin").live_grep, opts)
+	vim.keymap.set({ "n", "v" }, "<leader>.", "<cmd>luafile $MYVIMRC<cr>", opts)
 end
 
 return M
