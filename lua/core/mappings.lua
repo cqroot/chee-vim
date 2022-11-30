@@ -16,9 +16,17 @@ function M.load()
 	-- ************************************************************************
 	-- * Buffer                                                           *
 	-- ************************************************************************
-	vim.keymap.set({ "n", "v" }, "J", "<cmd>bp!<cr>", opts)
-	vim.keymap.set({ "n", "v" }, "K", "<cmd>bn!<cr>", opts)
+	-- vim.keymap.set({ "n", "v" }, "J", "<cmd>bp!<cr>", opts)
+	-- vim.keymap.set({ "n", "v" }, "K", "<cmd>bn!<cr>", opts)
+
+	vim.keymap.set({ "n", "v" }, "J", "<cmd>BufferLineCyclePrev<cr>", opts)
+	vim.keymap.set({ "n", "v" }, "K", "<cmd>BufferLineCycleNext<cr>", opts)
+
+	vim.keymap.set({ "n" }, "<leader>J", "<cmd>BufferLineMovePrev<cr>", opts)
+	vim.keymap.set({ "n" }, "<leader>K", "<cmd>BufferLineMoveNext<cr>", opts)
+
 	vim.keymap.set({ "n", "v" }, "<M-w>", "<cmd>bp|bd #<cr>", opts)
+
 	vim.keymap.set({ "n", "v" }, "<M-a>", vim.lsp.buf.format, opts)
 	vim.keymap.set({ "n", "v" }, "<C-_>", "<Plug>NERDCommenterToggle", opts)
 
