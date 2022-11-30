@@ -7,9 +7,9 @@ function M.load()
 	vim.opt.ignorecase = true
 	vim.opt.wildignorecase = true
 
-    vim.opt.backup = false
-    vim.opt.writebackup = false
-    vim.opt.swapfile = false
+	vim.opt.backup = false
+	vim.opt.writebackup = false
+	vim.opt.swapfile = false
 
 	vim.opt.expandtab = true
 	vim.opt.smarttab = true
@@ -24,8 +24,9 @@ function M.load()
 	vim.opt.termguicolors = true
 	vim.opt.cursorline = true
 	vim.opt.cursorcolumn = get_option("editor_cursorcolumn")
+	vim.opt.colorcolumn = { 80, 120 }
 
-    vim.opt.conceallevel = 0
+	vim.opt.conceallevel = 0
 	vim.opt.list = true
 	vim.opt.listchars = {
 		tab = "»·",
