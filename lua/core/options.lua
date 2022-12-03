@@ -3,7 +3,7 @@ local M = {}
 local get_option = require("core.utils").get
 
 function M.load()
-	vim.opt.mouse = ""
+	vim.opt.mouse = "a"
 	vim.opt.ignorecase = true
 	vim.opt.wildignorecase = true
 
@@ -29,6 +29,7 @@ function M.load()
 	vim.opt.conceallevel = 0
 	vim.opt.list = true
 	vim.opt.listchars = {
+		space = "·",
 		tab = "»·",
 		trail = "·",
 		nbsp = "·",
