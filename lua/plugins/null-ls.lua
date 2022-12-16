@@ -19,11 +19,16 @@ function M.load()
 			end
 		end,
 		sources = {
+			null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.clang_format,
 			null_ls.builtins.formatting.cmake_format,
-			null_ls.builtins.formatting.prettier,
+			null_ls.builtins.formatting.prettierd,
 			null_ls.builtins.formatting.shfmt,
 			null_ls.builtins.formatting.stylua,
+			null_ls.builtins.formatting.taplo,
+
+			null_ls.builtins.diagnostics.golangci_lint,
+			null_ls.builtins.diagnostics.shellcheck,
 		},
 	})
 end
