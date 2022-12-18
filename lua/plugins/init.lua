@@ -125,6 +125,17 @@ function M.load()
 		use({
 			"dkarter/bullets.vim",
 			ft = "markdown",
+			config = function()
+				vim.g.bullets_outline_levels = { "num", "num", "num", "num", "num", "num" }
+
+				local mdgroup = vim.api.nvim_create_augroup("Markdown", {})
+				vim.api.nvim_create_autocmd("FileType", {
+					group = mdgroup,
+					callback = function()
+						vim.opt.shiftwidth = 2
+					end,
+				})
+			end,
 		})
 		use({
 			"preservim/vim-markdown",
