@@ -160,6 +160,12 @@ function M.load()
 				require("neoscroll").setup()
 			end,
 		})
+		use({
+			"numToStr/Navigator.nvim",
+			config = function()
+				require("Navigator").setup()
+			end,
+		})
 	end)
 end
 
