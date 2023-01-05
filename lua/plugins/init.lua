@@ -66,18 +66,17 @@ function M.load()
             end,
         },
 
-        -- Editor
+        {
+            "preservim/nerdcommenter",
+            config = function()
+                require("plugins.nerdcommenter").load()
+            end,
+        },
         {
             "jose-elias-alvarez/null-ls.nvim",
             dependencies = { "nvim-lua/plenary.nvim" },
             config = function()
                 require("plugins.null-ls").load()
-            end,
-        },
-        {
-            "preservim/nerdcommenter",
-            config = function()
-                require("plugins.nerdcommenter").load()
             end,
         },
         {
@@ -94,6 +93,13 @@ function M.load()
             end,
             config = function()
                 require("plugins.treesitter").load()
+            end,
+        },
+        {
+            "folke/trouble.nvim",
+            dependencies = "kyazdani42/nvim-web-devicons",
+            config = function()
+                require("trouble").setup({})
             end,
         },
 
