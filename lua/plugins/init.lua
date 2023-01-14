@@ -82,7 +82,7 @@ function M.load()
         {
             "numToStr/Comment.nvim",
             config = function()
-                require("Comment").setup()
+                require("plugins.comment").load()
             end,
         },
         {

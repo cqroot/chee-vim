@@ -28,7 +28,7 @@ function M.load()
 	vim.keymap.set({ "n", "v" }, "<M-w>", "<cmd>bp|bd #<cr>", opts)
 
 	vim.keymap.set({ "n", "v" }, "<M-a>", vim.lsp.buf.format, opts)
-	vim.keymap.set({ "n", "v" }, "<C-_>", "<Plug>NERDCommenterToggle", opts)
+	-- vim.keymap.set({ "n", "v" }, "<C-_>", "<Plug>NERDCommenterToggle", opts)
 
 	-- ************************************************************************
 	-- * Others                                                               *
