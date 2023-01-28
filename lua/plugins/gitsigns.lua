@@ -1,11 +1,9 @@
 local M = {}
 
-local get_option = require("core.utils").get
-
 function M.load()
-	require("gitsigns").setup({
-		current_line_blame = get_option("git_current_line_blame"),
-	})
+    require("gitsigns").setup({
+        current_line_blame = require("core.options").git_CurrentLineBlame(),
+    })
 end
 
 return M

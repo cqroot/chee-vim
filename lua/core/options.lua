@@ -1,41 +1,35 @@
 local M = {}
 
-local get_option = require("core.utils").get
+function M.editor_LineNumber()
+    return require("core.utils").get("editor_LineNumber")
+end
 
-function M.load()
-    vim.opt.mouse = "a"
-    vim.opt.ignorecase = true
-    vim.opt.wildignorecase = true
+function M.editor_CursorLine()
+    return require("core.utils").get("editor_CursorLine")
+end
 
-    vim.opt.backup = false
-    vim.opt.writebackup = false
-    vim.opt.swapfile = false
+function M.editor_CursorColumn()
+    return require("core.utils").get("editor_CursorColumn")
+end
 
-    vim.opt.expandtab = true
-    vim.opt.smarttab = true
-    vim.opt.smartindent = true
-    vim.opt.autoindent = true
-    vim.opt.tabstop = 4
-    vim.opt.softtabstop = 4
-    vim.opt.shiftwidth = 4
+function M.editor_FormatOnSave()
+    return require("core.utils").get("editor_FormatOnSave")
+end
 
-    vim.opt.number = true
-    vim.opt.relativenumber = get_option("editor_relativenumber")
-    vim.opt.termguicolors = true
-    vim.opt.cursorline = true
-    vim.opt.cursorcolumn = get_option("editor_cursorcolumn")
-    vim.opt.colorcolumn = { 80, 120 }
+function M.editor_ImSwitch()
+    return require("core.utils").get("editor_ImSwitch")
+end
 
-    vim.opt.conceallevel = 0
-    vim.opt.list = true
-    vim.opt.listchars = {
-        space = "·",
-        tab = "»·",
-        trail = "·",
-        nbsp = "·",
-        eol = "↴",
-    }
-    vim.opt.completeopt = { "menu", "menuone", "noselect" }
+function M.workbench_ColorScheme()
+    return require("core.utils").get("workbench_ColorScheme")
+end
+
+function M.git_CurrentLineBlame()
+    return require("core.utils").get("git_CurrentLineBlame")
+end
+
+function M.markdown_PreviewBrowser()
+    return require("core.utils").get("markdown_PreviewBrowser")
 end
 
 return M
