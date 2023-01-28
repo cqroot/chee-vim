@@ -27,6 +27,7 @@ function M.load()
             }),
             null_ls.builtins.formatting.prettierd.with({
                 filetypes = { "markdown" },
+                -- "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html", "json", "jsonc", "yaml", "markdown", "markdown.mdx", "graphql", "handlebars"
             }),
             null_ls.builtins.formatting.shfmt,
             null_ls.builtins.formatting.stylua,
