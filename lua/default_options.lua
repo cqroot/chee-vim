@@ -18,7 +18,7 @@ M.editor_ImSwitch = ""
 M.workbench_ColorScheme = "dracula"
 
 -- true / false
-M.git_CurrentLineBlame = false
+M.git_CurrentLineBlame = true
 
 M.markdown_PreviewBrowser = "surf"
 
