@@ -35,16 +35,23 @@ function M.load()
             end,
         })
     end, opts)
+    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+    vim.keymap.set("n", "<leader>p", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "<leader>n", vim.diagnostic.goto_next, opts)
     -- vim.keymap.set({ "n", "v" }, "<C-_>", "<Plug>NERDCommenterToggle", opts)
+
+    -- ************************************************************************
+    -- * Views                                                                *
+    -- ************************************************************************
+    vim.keymap.set({ "n", "v" }, "<C-k>f", "<cmd>Neotree toggle<cr>", opts)
+    -- vim.keymap.set({ "n", "v" }, "<leader>q", "<cmd>Neotree toggle<cr>", opts)
+    vim.keymap.set({ "n", "v" }, "<C-k>w", "<cmd>SymbolsOutline<cr>", opts)
+    vim.keymap.set({ "n", "v" }, "<C-k>d", "<cmd>Gitsigns diffthis<cr>", opts)
+    -- vim.keymap.set({ "n", "v" }, "<leader>w", "<cmd>AerialToggle<cr>", opts)
 
     -- ************************************************************************
     -- * Others                                                               *
     -- ************************************************************************
-    vim.keymap.set({ "n", "v" }, "<leader>q", "<cmd>Neotree toggle<cr>", opts)
-    -- vim.keymap.set({ "n", "v" }, "<leader>w", "<cmd>AerialToggle<cr>", opts)
-    vim.keymap.set({ "n", "v" }, "<leader>w", "<cmd>SymbolsOutline<cr>", opts)
-    vim.keymap.set({ "n", "v" }, "<leader>e", "<cmd>Gitsigns diffthis<cr>", opts)
-
     vim.keymap.set({ "n", "v" }, "<leader>s", require("telescope.builtin").find_files, opts)
     vim.keymap.set({ "n", "v" }, "<leader>f", require("telescope.builtin").live_grep, opts)
     vim.keymap.set({ "n", "v" }, "<leader>.", "<cmd>luafile $MYVIMRC<cr>", opts)

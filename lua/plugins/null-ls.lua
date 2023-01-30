@@ -25,13 +25,18 @@ function M.load()
             null_ls.builtins.formatting.eslint_d.with({
                 filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
             }),
+            null_ls.builtins.formatting.gofumpt.with({
+                filetypes = { "go" },
+            }),
             null_ls.builtins.formatting.prettierd.with({
                 filetypes = { "markdown" },
                 -- "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html", "json", "jsonc", "yaml", "markdown", "markdown.mdx", "graphql", "handlebars"
             }),
             null_ls.builtins.formatting.shfmt,
             null_ls.builtins.formatting.stylua,
-            null_ls.builtins.formatting.taplo,
+            null_ls.builtins.formatting.taplo.with({
+                filetypes = { "toml" },
+            }),
 
             -- null_ls.builtins.diagnostics.golangci_lint,
             -- null_ls.builtins.diagnostics.shellcheck,

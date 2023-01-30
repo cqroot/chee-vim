@@ -20,6 +20,6 @@ M.workbench_ColorScheme = "dracula"
 -- true / false
 M.git_CurrentLineBlame = true
 
-M.markdown_PreviewBrowser = "surf"
+M.markdown_PreviewBrowser = "firefox"
 
 return M

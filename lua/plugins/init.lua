@@ -95,13 +95,6 @@ function M.load()
                 require("plugins.treesitter").load()
             end,
         },
-        {
-            "folke/trouble.nvim",
-            dependencies = "kyazdani42/nvim-web-devicons",
-            config = function()
-                require("trouble").setup({})
-            end,
-        },
 
         -- ************************************************************************
         -- *  Git                                                                 *

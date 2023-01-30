@@ -15,4 +15,4 @@ end
 
 require("cheevim").init()
 
-vim.cmd("command SudoWrite :execute ':silent w !sudo tee % > /dev/null' | :edit!")
+vim.cmd("command! SudoWrite :execute ':silent w !sudo tee % > /dev/null' | :edit!")
