@@ -31,10 +31,10 @@ function M.load()
     vim.opt.writebackup = false
     vim.opt.swapfile = false
 
-    vim.opt.expandtab = true
-    vim.opt.smarttab = true
+    vim.opt.smarttab = false
     vim.opt.smartindent = true
     vim.opt.autoindent = true
+    vim.opt.expandtab = false
     vim.opt.tabstop = 4
     vim.opt.softtabstop = 4
     vim.opt.shiftwidth = 4
