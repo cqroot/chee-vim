@@ -9,10 +9,32 @@ function M.load()
     vim.opt.rtp:prepend(lazypath)
 
     require("lazy").setup({
+        -- {
+        --     "mcchrish/zenbones.nvim",
+        --     config = function()
+        --         vim.g.zenbones_compat = 1
+        --     end,
+        --     lazy = true,
+        -- },
+        -- {
+        --     "Shatur/neovim-ayu",
+        --     lazy = true,
+        -- },
+        -- {
+        --     "Mofiqul/vscode.nvim",
+        --     lazy = true,
+        -- },
         {
-            "dracula/vim",
-            name = "dracula",
-            lazy = true,
+            "navarasu/onedark.nvim",
+            config = function()
+                require("onedark").setup({
+                    -- style = "darker",
+                    -- style = "cool",
+                    style = "warmer",
+                    -- dark, darker, cool, deep, warm, warmer, light
+                })
+            end,
+            -- lazy = true,
         },
 
         -- Panels
@@ -30,7 +52,8 @@ function M.load()
             end,
         },
         {
-            "simrat39/symbols-outline.nvim",
+            -- "simrat39/symbols-outline.nvim",
+            "cqroot/symbols-outline-mdnum.nvim",
             cmd = "SymbolsOutline",
             config = function()
                 require("plugins.symbols-outline").load()
