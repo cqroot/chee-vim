@@ -29,8 +29,20 @@ function M.load()
                 filetypes = { "go" },
             }),
             null_ls.builtins.formatting.prettierd.with({
-                filetypes = { "markdown" },
-                -- "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html", "json", "jsonc", "yaml", "markdown", "markdown.mdx", "graphql", "handlebars"
+                filetypes = {
+                    "markdown",
+                    "css",
+                    "scss",
+                    "less",
+                    "html",
+                    "json",
+                    "jsonc",
+                    "yaml",
+                    "markdown",
+                    "markdown.mdx",
+                    "graphql",
+                    "handlebars",
+                },
             }),
             null_ls.builtins.formatting.shfmt,
             null_ls.builtins.formatting.stylua,
@@ -38,7 +50,9 @@ function M.load()
                 filetypes = { "toml" },
             }),
 
-            -- null_ls.builtins.diagnostics.golangci_lint,
+            null_ls.builtins.diagnostics.golangci_lint.with({
+                filetypes = { "go" },
+            }),
             -- null_ls.builtins.diagnostics.shellcheck,
         },
     })

@@ -46,7 +46,8 @@ function M.load()
     vim.opt.list = true
     vim.opt.listchars = {
         space = "·",
-        tab = "»·",
+        -- tab = "» ",
+        tab = "│ ",
         trail = "·",
         nbsp = "·",
         eol = "↴",
