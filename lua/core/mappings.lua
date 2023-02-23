@@ -60,10 +60,10 @@ function M.load()
     -- ************************************************************************
     -- * Others                                                               *
     -- ************************************************************************
-    vim.keymap.set({ "n", "v" }, "<leader>ff", require("telescope.builtin").find_files, opts)
-    vim.keymap.set({ "n", "v" }, "<leader>fg", require("telescope.builtin").live_grep, opts)
-    vim.keymap.set({ "n", "v" }, "<leader>fb", require("telescope.builtin").buffers, opts)
-    vim.keymap.set({ "n", "v" }, "<leader>fh", require("telescope.builtin").help_tags, opts)
+    vim.keymap.set({ "n", "v" }, "<leader>f", require("telescope.builtin").find_files, opts)
+    vim.keymap.set({ "n", "v" }, "<leader>g", require("telescope.builtin").live_grep, opts)
+    vim.keymap.set({ "n", "v" }, "<leader>b", require("telescope.builtin").buffers, opts)
+    -- vim.keymap.set({ "n", "v" }, "<leader>h", require("telescope.builtin").help_tags, opts)
     vim.keymap.set({ "n", "v" }, "<leader>.", "<cmd>luafile $MYVIMRC<cr>", opts)
 end
 

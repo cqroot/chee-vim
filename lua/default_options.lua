@@ -23,6 +23,6 @@ M.workbench_ColorScheme = "onedark"
 -- true / false
 M.git_CurrentLineBlame = true
 
-M.markdown_PreviewBrowser = "firefox"
+M.markdown_PreviewBrowser = ""
 
 return M
