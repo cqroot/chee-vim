@@ -3,18 +3,24 @@
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 ROOT_DIR=$(dirname "${SCRIPT_DIR}")
 CONFIG_DIR=${ROOT_DIR}/config
-OPTIONS_FILE=${ROOT_DIR}/lua/generated_options.lua
+
+OPTS_SH_PATH=${CONFIG_DIR}/options.sh
+GEN_OPTS_LUA_PATH=${ROOT_DIR}/lua/generated_options.lua
 
 function add_config() {
-	echo "$1" >>"${OPTIONS_FILE}"
+	echo "$1" >>"${GEN_OPTS_LUA_PATH}"
 }
 
 function bootstrap() {
-	if [ -f "${CONFIG_DIR}/options.sh" ]; then
-		source "${CONFIG_DIR}/options.sh"
+	if [ ! -f "${OPTS_SH_PATH}" ]; then
+		ln -s "${CONFIG_DIR}/options-sample.sh" "${OPTS_SH_PATH}"
 	fi
 
-	echo '' >"${OPTIONS_FILE}"
+	if [ -f "${OPTS_SH_PATH}" ]; then
+		source "${OPTS_SH_PATH}"
+	fi
+
+	echo '' >"${GEN_OPTS_LUA_PATH}"
 
 	if [ "${ExpandTab:-1}" -eq 0 ]; then
 		add_config 'vim.opt.expandtab = false'
