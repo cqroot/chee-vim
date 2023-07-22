@@ -1,4 +1,4 @@
-# Chee Nvim
+# Keith Nvim
 
 ## Features
 

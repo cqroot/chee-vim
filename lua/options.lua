@@ -1,27 +1,5 @@
 local M = {}
 
-local function setup_line_number()
-    local line_number = require("core.options").editor_LineNumber()
-    if line_number == false then
-        vim.opt.number = false
-    elseif line_number == "relative" then
-        vim.opt.relativenumber = true
-    else
-        vim.opt.number = true
-    end
-end
-
-local function setup_cursor()
-    vim.opt.cursorline = require("core.options").editor_CursorLine()
-    vim.opt.cursorcolumn = require("core.options").editor_CursorColumn()
-end
-
-local function setup_im_switch()
-    if require("core.options").editor_ImSwitch() == "fcitx" then
-        require("core.im_fcitx").load()
-    end
-end
-
 function M.load()
     vim.opt.mouse = "a"
     vim.opt.ignorecase = true
@@ -53,10 +31,17 @@ function M.load()
         eol = "↴",
     }
     vim.opt.completeopt = { "menu", "menuone", "noselect" }
+    vim.opt.fileformats = { "unix", "dos" }
 
-    setup_line_number()
-    setup_cursor()
-    setup_im_switch()
+    vim.opt.number = true
+    vim.opt.relativenumber = false
+
+    vim.opt.cursorline = true
+    vim.opt.cursorcolumn = true
+
+    if vim.fn.executable("fcitx-remote") == 1 then
+        require("utils.im_fcitx").load()
+    end
 end
 
 return M

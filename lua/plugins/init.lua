@@ -124,45 +124,45 @@ function M.load()
                 require("plugins.treesitter").load()
             end,
         },
-        {
-            "rcarriga/nvim-notify",
-            config = function()
-                require("notify").setup({
-                    background_colour = "#000000",
-                })
-            end,
-        },
-        {
-            "folke/noice.nvim",
-            config = function()
-                require("noice").setup({
-                    lsp = {
-                        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-                        override = {
-                            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                            ["vim.lsp.util.stylize_markdown"] = true,
-                            ["cmp.entry.get_documentation"] = true,
-                        },
-                    },
-                    -- you can enable a preset for easier configuration
-                    presets = {
-                        bottom_search = true, -- use a classic bottom cmdline for search
-                        command_palette = true, -- position the cmdline and popupmenu together
-                        long_message_to_split = true, -- long messages will be sent to a split
-                        inc_rename = false, -- enables an input dialog for inc-rename.nvim
-                        lsp_doc_border = false, -- add a border to hover docs and signature help
-                    },
-                })
-            end,
-            dependencies = {
-                -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-                "MunifTanjim/nui.nvim",
-                -- OPTIONAL:
-                --   `nvim-notify` is only needed, if you want to use the notification view.
-                --   If not available, we use `mini` as the fallback
-                -- "rcarriga/nvim-notify",
-            },
-        },
+        -- {
+        --     "rcarriga/nvim-notify",
+        --     config = function()
+        --         require("notify").setup({
+        --             background_colour = "#000000",
+        --         })
+        --     end,
+        -- },
+        -- {
+        --     "folke/noice.nvim",
+        --     config = function()
+        --         require("noice").setup({
+        --             lsp = {
+        --                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        --                 override = {
+        --                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        --                     ["vim.lsp.util.stylize_markdown"] = true,
+        --                     ["cmp.entry.get_documentation"] = true,
+        --                 },
+        --             },
+        --             -- you can enable a preset for easier configuration
+        --             presets = {
+        --                 bottom_search = true, -- use a classic bottom cmdline for search
+        --                 command_palette = true, -- position the cmdline and popupmenu together
+        --                 long_message_to_split = true, -- long messages will be sent to a split
+        --                 inc_rename = false, -- enables an input dialog for inc-rename.nvim
+        --                 lsp_doc_border = false, -- add a border to hover docs and signature help
+        --             },
+        --         })
+        --     end,
+        --     dependencies = {
+        --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+        --         "MunifTanjim/nui.nvim",
+        --         -- OPTIONAL:
+        --         --   `nvim-notify` is only needed, if you want to use the notification view.
+        --         --   If not available, we use `mini` as the fallback
+        --         -- "rcarriga/nvim-notify",
+        --     },
+        -- },
 
         -- ************************************************************************
         -- *  Git                                                                 *
@@ -173,6 +173,7 @@ function M.load()
                 require("plugins.gitsigns").load()
             end,
         },
+        { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
 
         -- ************************************************************************
         -- *  Completion                                                          *
@@ -195,6 +196,35 @@ function M.load()
             config = function()
                 require("nvim-autopairs").setup({})
             end,
+        },
+
+        -- ************************************************************************
+        -- *  Terminal                                                            *
+        -- ************************************************************************
+        {
+            "akinsho/toggleterm.nvim",
+            version = "*",
+            config = function()
+                require("plugins.toggleterm").load()
+            end,
+        },
+
+        -- ************************************************************************
+        -- *  Go                                                                  *
+        -- ************************************************************************
+        {
+            "ray-x/go.nvim",
+            dependencies = { -- optional packages
+                "ray-x/guihua.lua",
+                "neovim/nvim-lspconfig",
+                "nvim-treesitter/nvim-treesitter",
+            },
+            config = function()
+                require("go").setup()
+            end,
+            event = { "CmdlineEnter" },
+            ft = { "go", "gomod" },
+            build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
         },
 
         -- ************************************************************************
@@ -244,6 +274,14 @@ function M.load()
         -- ************************************************************************
         -- *  Others                                                              *
         -- ************************************************************************
+        {
+            "ggandor/leap.nvim",
+            config = function()
+                -- require("leap").add_default_mappings()
+                vim.keymap.set("n", "f", "<Plug>(leap-forward-to)")
+                vim.keymap.set("n", "F", "<Plug>(leap-backward-to)")
+            end,
+        },
         {
             "karb94/neoscroll.nvim",
             config = function()
