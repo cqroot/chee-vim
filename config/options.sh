@@ -1,1 +1,0 @@
-/home/cqroot/.config/nvim/config/options-sample.sh

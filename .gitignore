@@ -3,4 +3,4 @@ lazy-lock.json
 lua/custom_options.lua
 
 generated_*
-*-sample.sh
+config/options.sh
