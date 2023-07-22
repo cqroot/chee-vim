@@ -12,7 +12,6 @@ function M.load()
     vim.opt.smarttab = false
     vim.opt.smartindent = true
     vim.opt.autoindent = true
-    vim.opt.expandtab = false
     vim.opt.tabstop = 4
     vim.opt.softtabstop = 4
     vim.opt.shiftwidth = 4
@@ -42,6 +41,8 @@ function M.load()
     if vim.fn.executable("fcitx-remote") == 1 then
         require("utils.im_fcitx").load()
     end
+
+    pcall(require, "generated_options")
 end
 
 return M
