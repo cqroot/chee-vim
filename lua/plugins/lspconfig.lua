@@ -1,8 +1,6 @@
 local M = {}
 
 function M.load()
-    vim.keymap.set("n", "H", vim.lsp.buf.hover, { noremap = true, silent = true })
-
     -- Set up lspconfig.
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
