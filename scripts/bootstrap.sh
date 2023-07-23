@@ -22,10 +22,19 @@ function bootstrap() {
 
 	echo '' >"${GEN_OPTS_LUA_PATH}"
 
+	# **************************************************
+	# * Options                                        *
+	# **************************************************
 	if [ "${ExpandTab:-1}" -eq 0 ]; then
 		add_config 'vim.opt.expandtab = false'
 	else
 		add_config 'vim.opt.expandtab = true'
+	fi
+
+	if [ "${CSyntaxForH:-0}" -eq 0 ]; then
+		add_config 'vim.g.c_syntax_for_h = 0'
+	else
+		add_config 'vim.g.c_syntax_for_h = 1'
 	fi
 }
 

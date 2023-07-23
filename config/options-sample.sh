@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-ExpandTab=1
+export ExpandTab=1
+
+# **************************************************
+# * Languages                                      *
+# **************************************************
+export CSyntaxForH=1
