@@ -56,13 +56,6 @@ function M.load()
             end,
         },
         {
-            "stevearc/aerial.nvim",
-            cmd = "AerialToggle",
-            config = function()
-                require("plugins.aerial").load()
-            end,
-        },
-        {
             "nvim-telescope/telescope.nvim",
             dependencies = { { "nvim-lua/plenary.nvim" } },
             config = function()
@@ -91,12 +84,6 @@ function M.load()
             end,
         },
 
-        {
-            "preservim/nerdcommenter",
-            config = function()
-                require("plugins.nerdcommenter").load()
-            end,
-        },
         {
             "jose-elias-alvarez/null-ls.nvim",
             dependencies = { "nvim-lua/plenary.nvim" },
