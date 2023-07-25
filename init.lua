@@ -6,8 +6,8 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 require("options").load()
 require("plugins").load()
 require("plugins.cmp").load()
+require("commands").load()
 require("mappings").load()
 
 -- "onedark" "zenbones" "ayu-mirage" "vscode"
 pcall(vim.cmd, "colorscheme onedark")
-vim.cmd("command! SudoWrite :execute ':silent w !sudo tee % > /dev/null' | :edit!")
