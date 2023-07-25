@@ -1,14 +1,24 @@
 local M = {}
 
-function M.load()
+local function init_lazy()
     local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
     if not vim.loop.fs_stat(lazypath) then
-        vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", lazypath })
-        vim.fn.system({ "git", "-C", lazypath, "checkout", "tags/stable" }) -- last stable release
+        vim.fn.system({
+            "git",
+            "clone",
+            "--filter=blob:none",
+            "https://github.com/folke/lazy.nvim.git",
+            "--branch=stable",
+            lazypath,
+        })
     end
     vim.opt.rtp:prepend(lazypath)
+end
 
-    require("lazy").setup({
+function M.load()
+    init_lazy()
+
+    local plugins = {
         -- {
         --     "mcchrish/zenbones.nvim",
         --     config = function()
@@ -214,7 +224,9 @@ function M.load()
                 require("Navigator").setup()
             end,
         },
-    })
+    }
+
+    require("lazy").setup(plugins)
 end
 
 return M
