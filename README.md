@@ -1,11 +1,18 @@
-# Keith Nvim
+```
+██╗  ██╗███████╗███████╗███╗   ██╗██╗   ██╗██╗███╗   ███╗
+██║ ██╔╝██╔════╝██╔════╝████╗  ██║██║   ██║██║████╗ ████║
+█████╔╝ █████╗  █████╗  ██╔██╗ ██║██║   ██║██║██╔████╔██║
+██╔═██╗ ██╔══╝  ██╔══╝  ██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║  ██╗███████╗███████╗██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+```
 
-Keith Chu's neovim config.
+A lightweight, customizable neovim configuration.
 
 ## Installation
 
 ```bash
-git clone https://github.com/cqroot/nvim ~/.config/nvim
+git clone https://github.com/cqroot/keenvim ~/.config/nvim
 
 cd ~/.config/nvim
 make bootstrap
