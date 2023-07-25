@@ -164,50 +164,6 @@ function M.load()
         },
 
         -- ************************************************************************
-        -- *  Markdown                                                            *
-        -- ************************************************************************
-        {
-            "iamcco/markdown-preview.nvim",
-            build = "cd app && yarn install",
-            cmd = "MarkdownPreview",
-            ft = "markdown",
-            config = function()
-                require("plugins.markdown-preview").load()
-            end,
-            init = function()
-                vim.g.mkdp_filetypes = { "markdown" }
-            end,
-        },
-        {
-            "dkarter/bullets.vim",
-            ft = "markdown",
-            config = function()
-                vim.g.bullets_outline_levels = { "num", "num", "num", "num", "num", "num" }
-
-                local mdgroup = vim.api.nvim_create_augroup("Markdown", {})
-                vim.api.nvim_create_autocmd("FileType", {
-                    group = mdgroup,
-                    callback = function()
-                        vim.opt.shiftwidth = 2
-                    end,
-                })
-            end,
-        },
-        {
-            "preservim/vim-markdown",
-            ft = "markdown",
-            dependencies = {
-                "godlygeek/tabular",
-            },
-            config = function()
-                vim.g.vim_markdown_folding_disabled = 1
-                -- vim.g.vim_markdown_folding_style_pythonic = 1
-                vim.g.vim_markdown_math = 1
-                vim.g.vim_markdown_auto_insert_bullets = 0
-            end,
-        },
-
-        -- ************************************************************************
         -- *  Others                                                              *
         -- ************************************************************************
         {
@@ -225,6 +181,49 @@ function M.load()
             end,
         },
     }
+
+    if vim.g.keenvim_enable_markdown == 1 then
+        table.insert(plugins, {
+            "preservim/vim-markdown",
+            ft = "markdown",
+            dependencies = {
+                "godlygeek/tabular",
+            },
+            config = function()
+                vim.g.vim_markdown_folding_disabled = 1
+                -- vim.g.vim_markdown_folding_style_pythonic = 1
+                vim.g.vim_markdown_math = 1
+                vim.g.vim_markdown_auto_insert_bullets = 0
+            end,
+        })
+        table.insert(plugins, {
+            "iamcco/markdown-preview.nvim",
+            build = "cd app && yarn install",
+            cmd = "MarkdownPreview",
+            ft = "markdown",
+            config = function()
+                require("plugins.markdown-preview").load()
+            end,
+            init = function()
+                vim.g.mkdp_filetypes = { "markdown" }
+            end,
+        })
+        table.insert(plugins, {
+            "dkarter/bullets.vim",
+            ft = "markdown",
+            config = function()
+                vim.g.bullets_outline_levels = { "num", "num", "num", "num", "num", "num" }
+
+                local mdgroup = vim.api.nvim_create_augroup("Markdown", {})
+                vim.api.nvim_create_autocmd("FileType", {
+                    group = mdgroup,
+                    callback = function()
+                        vim.opt.shiftwidth = 2
+                    end,
+                })
+            end,
+        })
+    end
 
     require("lazy").setup(plugins)
 end
