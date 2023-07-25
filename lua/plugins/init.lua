@@ -107,16 +107,6 @@ function M.load()
                 require("plugins.comment").load()
             end,
         },
-        {
-            "nvim-treesitter/nvim-treesitter",
-            build = function()
-                local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-                ts_update()
-            end,
-            config = function()
-                require("plugins.treesitter").load()
-            end,
-        },
 
         -- ************************************************************************
         -- *  Git                                                                 *
@@ -181,6 +171,19 @@ function M.load()
             end,
         },
     }
+
+    if vim.g.keenvim_enable_treesitter == 1 then
+        table.insert(plugins, {
+            "nvim-treesitter/nvim-treesitter",
+            build = function()
+                local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+                ts_update()
+            end,
+            config = function()
+                require("plugins.treesitter").load()
+            end,
+        })
+    end
 
     if vim.g.keenvim_enable_markdown == 1 then
         table.insert(plugins, {

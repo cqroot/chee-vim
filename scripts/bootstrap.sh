@@ -37,6 +37,12 @@ function bootstrap() {
 		add_config 'vim.g.c_syntax_for_h = 1'
 	fi
 
+	if [ "${EnableTreesitter:-0}" -eq 0 ]; then
+		add_config 'vim.g.keenvim_enable_treesitter = 0'
+	else
+		add_config 'vim.g.keenvim_enable_treesitter = 1'
+	fi
+
 	if [ "${EnableMarkdown:-0}" -eq 0 ]; then
 		add_config 'vim.g.keenvim_enable_markdown = 0'
 	else

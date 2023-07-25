@@ -10,4 +10,5 @@ export CSyntaxForH=1
 # **************************************************
 # * Enabled Modules                                *
 # **************************************************
+export EnableTreesitter=0
 export EnableMarkdown=0
