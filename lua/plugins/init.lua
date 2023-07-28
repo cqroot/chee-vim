@@ -119,6 +119,28 @@ function M.load()
         },
         { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
 
+        {
+            "williamboman/mason.nvim",
+            config = function()
+                require("mason").setup()
+            end,
+        },
+        {
+            "williamboman/mason-lspconfig.nvim",
+            config = function()
+                require("mason-lspconfig").setup({
+                    ensure_installed = {
+                        "bashls",
+                        "clangd",
+                        "gopls",
+                        "pyright",
+                        "lua_ls",
+                        "volar",
+                    },
+                })
+            end,
+        },
+
         -- ************************************************************************
         -- *  Completion                                                          *
         -- ************************************************************************
