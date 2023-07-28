@@ -9,11 +9,18 @@ function M.load()
     -- ************************************************************************
     vim.keymap.set("n", "<C-s>", "<CMD>w<CR>")
     vim.keymap.set("i", "<C-s>", "<CMD>w<CR>")
-    vim.keymap.set("n", "<M-h>", "<CMD>NavigatorLeft<CR>")
-    vim.keymap.set("n", "<M-l>", "<CMD>NavigatorRight<CR>")
-    vim.keymap.set("n", "<M-k>", "<CMD>NavigatorUp<CR>")
-    vim.keymap.set("n", "<M-j>", "<CMD>NavigatorDown<CR>")
-    vim.keymap.set("n", "<M-p>", "<CMD>NavigatorPrevious<CR>")
+    if vim.g.keenvim_enable_navigator == 1 then
+        vim.keymap.set({ "n" }, "<M-h>", "<CMD>NavigatorLeft<CR>")
+        vim.keymap.set({ "n" }, "<M-l>", "<CMD>NavigatorRight<CR>")
+        vim.keymap.set({ "n" }, "<M-k>", "<CMD>NavigatorUp<CR>")
+        vim.keymap.set({ "n" }, "<M-j>", "<CMD>NavigatorDown<CR>")
+        vim.keymap.set({ "n" }, "<M-p>", "<CMD>NavigatorPrevious<CR>")
+    else
+        vim.api.nvim_set_keymap("n", "<M-h>", "<C-w>h", opts)
+        vim.api.nvim_set_keymap("n", "<M-j>", "<C-w>j", opts)
+        vim.api.nvim_set_keymap("n", "<M-k>", "<C-w>k", opts)
+        vim.api.nvim_set_keymap("n", "<M-l>", "<C-w>l", opts)
+    end
 
     -- ************************************************************************
     -- * Buffer                                                               *

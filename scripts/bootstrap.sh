@@ -48,6 +48,12 @@ function bootstrap() {
 	else
 		add_config 'vim.g.keenvim_enable_markdown = 1'
 	fi
+
+	if command -v tmux >/dev/null; then
+		add_config 'vim.g.keenvim_enable_navigator = 1'
+	else
+		add_config 'vim.g.keenvim_enable_navigator = 0'
+	fi
 }
 
 bootstrap

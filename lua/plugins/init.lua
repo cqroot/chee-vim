@@ -164,12 +164,6 @@ function M.load()
                 vim.keymap.set("n", "F", "<Plug>(leap-backward-to)")
             end,
         },
-        {
-            "numToStr/Navigator.nvim",
-            config = function()
-                require("Navigator").setup()
-            end,
-        },
     }
 
     if vim.g.keenvim_enable_treesitter == 1 then
@@ -224,6 +218,15 @@ function M.load()
                         vim.opt.shiftwidth = 2
                     end,
                 })
+            end,
+        })
+    end
+
+    if vim.g.keenvim_enable_navigator == 1 then
+        table.insert(plugins, {
+            "numToStr/Navigator.nvim",
+            config = function()
+                require("Navigator").setup()
             end,
         })
     end
