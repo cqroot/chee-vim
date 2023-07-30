@@ -38,7 +38,7 @@ function M.load()
     vim.opt.cursorline = true
     vim.opt.cursorcolumn = true
 
-    if vim.fn.executable("fcitx-remote") == 1 then
+    if vim.g.keenvim_enable_navigator == 1 then
         require("utils.im_fcitx").load()
     end
 

@@ -54,6 +54,12 @@ function bootstrap() {
 	else
 		add_config 'vim.g.keenvim_enable_navigator = 0'
 	fi
+
+	if command -v fcitx-remote >/dev/null; then
+		add_config 'vim.g.keenvim_enable_fcitx = 1'
+	else
+		add_config 'vim.g.keenvim_enable_fcitx = 0'
+	fi
 }
 
 bootstrap
