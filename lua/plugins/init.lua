@@ -186,6 +186,7 @@ function M.load()
                 vim.keymap.set("n", "F", "<Plug>(leap-backward-to)")
             end,
         },
+        { "MattesGroeger/vim-bookmarks" },
     }
 
     if vim.g.keenvim_enable_treesitter == 1 then
