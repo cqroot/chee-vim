@@ -38,27 +38,27 @@ function bootstrap() {
 	fi
 
 	if [ "${EnableTreesitter:-0}" -eq 0 ]; then
-		add_config 'vim.g.keenvim_enable_treesitter = 0'
+		add_config 'vim.g.kcnc_enable_treesitter = 0'
 	else
-		add_config 'vim.g.keenvim_enable_treesitter = 1'
+		add_config 'vim.g.kcnc_enable_treesitter = 1'
 	fi
 
 	if [ "${EnableMarkdown:-0}" -eq 0 ]; then
-		add_config 'vim.g.keenvim_enable_markdown = 0'
+		add_config 'vim.g.kcnc_enable_markdown = 0'
 	else
-		add_config 'vim.g.keenvim_enable_markdown = 1'
+		add_config 'vim.g.kcnc_enable_markdown = 1'
 	fi
 
 	if command -v tmux >/dev/null; then
-		add_config 'vim.g.keenvim_enable_navigator = 1'
+		add_config 'vim.g.kcnc_enable_navigator = 1'
 	else
-		add_config 'vim.g.keenvim_enable_navigator = 0'
+		add_config 'vim.g.kcnc_enable_navigator = 0'
 	fi
 
 	if command -v fcitx-remote >/dev/null; then
-		add_config 'vim.g.keenvim_enable_fcitx = 1'
+		add_config 'vim.g.kcnc_enable_fcitx = 1'
 	else
-		add_config 'vim.g.keenvim_enable_fcitx = 0'
+		add_config 'vim.g.kcnc_enable_fcitx = 0'
 	fi
 }
 

@@ -189,7 +189,7 @@ function M.load()
         { "MattesGroeger/vim-bookmarks" },
     }
 
-    if vim.g.keenvim_enable_treesitter == 1 then
+    if vim.g.kcnc_enable_treesitter == 1 then
         table.insert(plugins, {
             "nvim-treesitter/nvim-treesitter",
             build = function()
@@ -202,7 +202,7 @@ function M.load()
         })
     end
 
-    if vim.g.keenvim_enable_markdown == 1 then
+    if vim.g.kcnc_enable_markdown == 1 then
         table.insert(plugins, {
             "preservim/vim-markdown",
             ft = "markdown",
@@ -245,7 +245,7 @@ function M.load()
         })
     end
 
-    if vim.g.keenvim_enable_navigator == 1 then
+    if vim.g.kcnc_enable_navigator == 1 then
         table.insert(plugins, {
             "numToStr/Navigator.nvim",
             config = function()

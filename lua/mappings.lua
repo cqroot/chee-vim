@@ -9,7 +9,7 @@ function M.load()
     -- ************************************************************************
     vim.keymap.set("n", "<C-s>", "<CMD>w<CR>")
     vim.keymap.set("i", "<C-s>", "<CMD>w<CR>")
-    if vim.g.keenvim_enable_navigator == 1 then
+    if vim.g.kcnc_enable_navigator == 1 then
         vim.keymap.set({ "n" }, "<M-h>", "<CMD>NavigatorLeft<CR>")
         vim.keymap.set({ "n" }, "<M-l>", "<CMD>NavigatorRight<CR>")
         vim.keymap.set({ "n" }, "<M-k>", "<CMD>NavigatorUp<CR>")
