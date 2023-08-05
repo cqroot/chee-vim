@@ -86,7 +86,17 @@ function M.load()
     -- ************************************************************************
     -- * Others                                                               *
     -- ************************************************************************
-    vim.keymap.set({ "n", "v" }, "<leader>f", require("telescope.builtin").find_files, opts)
+    -- vim.keymap.set({ "n", "v" }, "<leader>f", require("telescope.builtin").find_files, opts)
+    vim.keymap.set({ "n", "v" }, "<C-p>", function()
+        require("telescope.builtin").find_files({
+            previewer = false,
+            layout_strategy = "vertical",
+            layout_config = {
+                width = 0.5,
+                height = 0.5,
+            },
+        })
+    end, opts)
     vim.keymap.set({ "n", "v" }, "<leader>g", require("telescope.builtin").live_grep, opts)
     vim.keymap.set({ "n", "v" }, "<leader>b", require("telescope.builtin").buffers, opts)
     -- vim.keymap.set({ "n", "v" }, "<leader>h", require("telescope.builtin").help_tags, opts)
@@ -96,7 +106,7 @@ function M.load()
 
     vim.keymap.set({ "n", "v" }, "<M-a>", show_menu, opts)
 
-    vim.keymap.set({ "n" }, "mm", "<Plug>BookmarkToggle <Plug>BookmarkShowAll",opts)
+    vim.keymap.set({ "n" }, "mm", "<Plug>BookmarkToggle <Plug>BookmarkShowAll", opts)
 end
 
 local winid = -1
