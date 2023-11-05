@@ -128,16 +128,18 @@ function M.load()
         {
             "williamboman/mason-lspconfig.nvim",
             config = function()
-                require("mason-lspconfig").setup({
-                    ensure_installed = {
-                        "bashls",
-                        "clangd",
-                        "gopls",
-                        "pyright",
-                        "lua_ls",
-                        "volar",
-                    },
-                })
+                require("plugins.mason-lspconfig").load()
+            end,
+        },
+        {
+            "jay-babu/mason-null-ls.nvim",
+            event = { "BufReadPre", "BufNewFile" },
+            dependencies = {
+                "williamboman/mason.nvim",
+                "jose-elias-alvarez/null-ls.nvim",
+            },
+            config = function()
+                require("plugins.mason-null-ls").load()
             end,
         },
 
