@@ -4,22 +4,9 @@ function M.load()
     -- Set up lspconfig.
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    require("lspconfig").bashls.setup({
-        capabilities = capabilities,
-    })
-
-    require("lspconfig").clangd.setup({
-        capabilities = capabilities,
-    })
-
-    require("lspconfig").gopls.setup({
-        capabilities = capabilities,
-    })
-
-    require("lspconfig").pyright.setup({
-        capabilities = capabilities,
-    })
-
+    require("lspconfig").bashls.setup({ capabilities = capabilities })
+    require("lspconfig").clangd.setup({ capabilities = capabilities })
+    require("lspconfig").gopls.setup({ capabilities = capabilities })
     require("lspconfig").lua_ls.setup({
         capabilities = capabilities,
         settings = {
@@ -43,9 +30,11 @@ function M.load()
             },
         },
     })
-
+    require("lspconfig").neocmake.setup({ capabilities = capabilities })
+    require("lspconfig").pyright.setup({ capabilities = capabilities })
     require("lspconfig").volar.setup({
         filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+        capabilities = capabilities,
     })
 end
 
