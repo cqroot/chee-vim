@@ -36,14 +36,7 @@ function M.load()
     -- ************************************************************************
     -- * LSPs                                                                 *
     -- ************************************************************************
-    vim.keymap.set({ "n", "v" }, "<M-F>", function()
-        vim.lsp.buf.format({
-            bufnr = bufnr,
-            filter = function(client)
-                return client.name == "null-ls"
-            end,
-        })
-    end, opts)
+    vim.keymap.set({ "n", "v" }, "<M-F>", "<cmd>Neoformat<cr>", opts)
 
     vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
     vim.keymap.set("n", "<leader>p", vim.diagnostic.goto_prev, opts)

@@ -95,10 +95,9 @@ function M.load()
         },
 
         {
-            "jose-elias-alvarez/null-ls.nvim",
-            dependencies = { "nvim-lua/plenary.nvim" },
+            "sbdchd/neoformat",
             config = function()
-                require("plugins.null-ls").load()
+                require("plugins.neoformat").load()
             end,
         },
         {
