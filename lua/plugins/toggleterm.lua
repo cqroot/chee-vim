@@ -12,7 +12,7 @@ function M.load()
             " let &shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
             " let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
 
-            set shellquote=
+            set shellquote= shellxquote=
         endif
     ]])
 
