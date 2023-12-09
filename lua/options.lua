@@ -31,6 +31,7 @@ function M.load()
     }
     vim.opt.completeopt = { "menu", "menuone", "noselect" }
     vim.opt.fileformats = { "unix", "dos" }
+    vim.opt.fixendofline = false
 
     vim.opt.number = true
     vim.opt.relativenumber = false
