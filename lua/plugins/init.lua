@@ -28,20 +28,20 @@ function M.load()
         -- {
         --     "Shatur/neovim-ayu",
         -- },
-        -- {
-        --     "Mofiqul/vscode.nvim",
-        -- },
         {
-            "navarasu/onedark.nvim",
-            config = function()
-                require("onedark").setup({
-                    style = "darker",
-                    -- style = "cool",
-                    -- style = "warmer",
-                    -- dark, darker, cool, deep, warm, warmer, light
-                })
-            end,
+            "Mofiqul/vscode.nvim",
         },
+        -- {
+        --     "navarasu/onedark.nvim",
+        --     config = function()
+        --         require("onedark").setup({
+        --             style = "darker",
+        --             -- style = "cool",
+        --             -- style = "warmer",
+        --             -- dark, darker, cool, deep, warm, warmer, light
+        --         })
+        --     end,
+        -- },
 
         -- Panels
         {

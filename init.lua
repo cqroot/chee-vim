@@ -10,4 +10,4 @@ require("commands").load()
 require("mappings").load()
 
 -- "onedark" "zenbones" "ayu-mirage" "vscode"
-pcall(vim.cmd, "colorscheme onedark")
+pcall(vim.cmd, "colorscheme vscode")
