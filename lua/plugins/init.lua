@@ -142,8 +142,14 @@ function M.load()
         { "hrsh7th/nvim-cmp" },
         { "onsails/lspkind.nvim" },
 
-        -- For luasnip users.
-        { "L3MON4D3/LuaSnip" },
+        {
+            "L3MON4D3/LuaSnip",
+            config = function()
+                require("luasnip.loaders.from_vscode").lazy_load({
+                    paths = vim.fn.stdpath("config") .. "/snippets",
+                })
+            end,
+        },
         { "saadparwaiz1/cmp_luasnip" },
         { "rafamadriz/friendly-snippets" },
 

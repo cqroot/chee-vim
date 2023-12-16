@@ -1,0 +1,11 @@
+{
+    "Check malloc": {
+        "prefix": "ifmalloc",
+        "body": [
+            "if ($1 == NULL) {",
+            "    log_info(\"Failed to allocate memory for $1.\");",
+            "}"
+        ],
+        "description": "Check whether malloc successfully allocated memory"
+    }
+}
