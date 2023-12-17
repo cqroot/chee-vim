@@ -1,0 +1,19 @@
+{
+  "Get current directory": {
+    "prefix": "curdir",
+    "body": [
+      "CURR_DIR=\\$(cd -- \"\\$(dirname -- \"\\${BASH_SOURCE[0]}\")\" &>/dev/null && pwd)"
+    ],
+    "description": "Get current directory"
+  },
+  "Process file contents line by line": {
+    "prefix": "linefile",
+    "body": ["while read -r line; do", "    echo \"\\${line}\"", "done <FILENAME"],
+    "description": "Process file output line by line"
+  },
+  "Process command output line by line": {
+    "prefix": "linecmd",
+    "body": ["while read -r line; do", "    echo \"\\${line}\"", "done < <(ls -l)"],
+    "description": "Process command output line by line"
+  }
+}

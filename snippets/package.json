@@ -8,6 +8,15 @@
       {
         "language": "c",
         "path": "./c.json"
+      },
+      {
+        "language": [
+          "shellscript",
+          "shell",
+          "sh",
+          "zsh"
+        ],
+        "path": "./shell.json"
       }
     ]
   }
