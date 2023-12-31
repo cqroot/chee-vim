@@ -1,4 +1,15 @@
 {
+  "shebang": {
+    "prefix": "env",
+    "body": [
+      "#!/usr/bin/env ${1:bash}",
+      "#",
+      "# ${2:Description of the script.}$0"
+    ],
+    "description": [
+      "Shebang to specify what shell is going to run the script by default. It includes a description of the script. \n\nIt must be defined in the first line of the script.\n\nBy using #!/usr/bin/env we are making the shebang portable, meaning it is going to work correctly even if the interpreter is not located under /usr/bin"
+    ]
+  },
   "Get current directory": {
     "prefix": "curdir",
     "body": [
@@ -8,12 +19,20 @@
   },
   "Process file contents line by line": {
     "prefix": "linefile",
-    "body": ["while read -r line; do", "    echo \"\\${line}\"", "done <FILENAME"],
+    "body": [
+      "while read -r line; do",
+      "    echo \"\\${line}\"",
+      "done <FILENAME"
+    ],
     "description": "Process file output line by line"
   },
   "Process command output line by line": {
     "prefix": "linecmd",
-    "body": ["while read -r line; do", "    echo \"\\${line}\"", "done < <(ls -l)"],
+    "body": [
+      "while read -r line; do",
+      "    echo \"\\${line}\"",
+      "done < <(ls -l)"
+    ],
     "description": "Process command output line by line"
   }
 }
