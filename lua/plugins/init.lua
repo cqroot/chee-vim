@@ -118,19 +118,6 @@ function M.load()
         },
         { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
 
-        {
-            "williamboman/mason.nvim",
-            config = function()
-                require("mason").setup()
-            end,
-        },
-        {
-            "williamboman/mason-lspconfig.nvim",
-            config = function()
-                require("plugins.mason-lspconfig").load()
-            end,
-        },
-
         -- ************************************************************************
         -- *  Completion                                                          *
         -- ************************************************************************
@@ -170,19 +157,6 @@ function M.load()
                 require("plugins.toggleterm").load()
             end,
         },
-
-        -- ************************************************************************
-        -- *  Others                                                              *
-        -- ************************************************************************
-        {
-            "ggandor/leap.nvim",
-            config = function()
-                -- require("leap").add_default_mappings()
-                vim.keymap.set("n", "f", "<Plug>(leap-forward-to)")
-                vim.keymap.set("n", "F", "<Plug>(leap-backward-to)")
-            end,
-        },
-        { "MattesGroeger/vim-bookmarks" },
     }
 
     if vim.g.kcnc_enable_treesitter == 1 then
