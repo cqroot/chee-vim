@@ -1,8 +1,9 @@
-local M = {}
-
-function M.load()
-    -- vim.cmd("if has('win32') | let &shell = 'pwsh' | endif")
-    vim.cmd([[
+return {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = function()
+        -- vim.cmd("if has('win32') | let &shell = 'pwsh' | endif")
+        vim.cmd([[
         if has('win32')
             let &shell = '"C:/Program Files/Git/bin/bash.exe"'
             let &shellcmdflag = '-c'
@@ -16,11 +17,10 @@ function M.load()
         endif
     ]])
 
-    require("toggleterm").setup({
-        float_opts = {
-            border = "curved",
-        },
-    })
-end
-
-return M
+        require("toggleterm").setup({
+            float_opts = {
+                border = "curved",
+            },
+        })
+    end,
+}

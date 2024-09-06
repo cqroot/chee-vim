@@ -19,74 +19,32 @@ function M.load()
     init_lazy()
 
     local plugins = {
-        -- {
-        --     "mcchrish/zenbones.nvim",
-        --     config = function()
-        --         vim.g.zenbones_compat = 1
-        --     end,
-        -- },
-        -- {
-        --     "Shatur/neovim-ayu",
-        -- },
+        {
+            "rebelot/kanagawa.nvim",
+        },
         {
             "Mofiqul/vscode.nvim",
         },
-        -- {
-        --     "navarasu/onedark.nvim",
-        --     config = function()
-        --         require("onedark").setup({
-        --             style = "darker",
-        --             -- style = "cool",
-        --             -- style = "warmer",
-        --             -- dark, darker, cool, deep, warm, warmer, light
-        --         })
-        --     end,
-        -- },
+        {
+            "navarasu/onedark.nvim",
+            config = function()
+                require("onedark").setup({
+                    -- style = "darker",
+                    -- style = "cool",
+                    style = "warmer",
+                    -- dark, darker, cool, deep, warm, warmer, light
+                })
+            end,
+        },
 
         -- Panels
-        {
-            "nvim-neo-tree/neo-tree.nvim",
-            branch = "v2.x",
-            dependencies = {
-                "nvim-lua/plenary.nvim",
-                "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-                "MunifTanjim/nui.nvim",
-            },
-            cmd = "Neotree",
-            config = function()
-                require("plugins.neo-tree").load()
-            end,
-        },
-        {
-            -- "simrat39/symbols-outline.nvim",
-            "cqroot/symbols-outline-mdnum.nvim",
-            cmd = "SymbolsOutline",
-            config = function()
-                require("plugins.symbols-outline").load()
-            end,
-        },
-        {
-            "nvim-telescope/telescope.nvim",
-            dependencies = { { "nvim-lua/plenary.nvim" } },
-            config = function()
-                require("plugins.telescope").load()
-            end,
-        },
+        require("plugins.neo-tree"),
+        require("plugins.symbols-outline"),
+        require("plugins.telescope"),
 
         -- Appearance
-        {
-            "nvim-lualine/lualine.nvim",
-            config = function()
-                require("plugins.lualine").load()
-            end,
-        },
-        {
-            "akinsho/bufferline.nvim",
-            dependencies = "kyazdani42/nvim-web-devicons",
-            config = function()
-                require("plugins.bufferline").load()
-            end,
-        },
+        require("plugins.lualine"),
+        require("plugins.bufferline"),
         {
             "chrisbra/Colorizer",
             init = function()
@@ -94,28 +52,13 @@ function M.load()
             end,
         },
 
-        {
-            "stevearc/conform.nvim",
-            config = function()
-                require("plugins.conform")
-            end
-        },
-        {
-            "numToStr/Comment.nvim",
-            config = function()
-                require("plugins.comment").load()
-            end,
-        },
+        require("plugins.conform"),
+        require("plugins.comment"),
 
         -- ************************************************************************
         -- *  Git                                                                 *
         -- ************************************************************************
-        {
-            "lewis6991/gitsigns.nvim",
-            config = function()
-                require("plugins.gitsigns").load()
-            end,
-        },
+        require("plugins.gitsigns"),
         { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
 
         -- ************************************************************************
@@ -150,26 +93,11 @@ function M.load()
         -- ************************************************************************
         -- *  Terminal                                                            *
         -- ************************************************************************
-        {
-            "akinsho/toggleterm.nvim",
-            version = "*",
-            config = function()
-                require("plugins.toggleterm").load()
-            end,
-        },
+        require("plugins.toggleterm"),
     }
 
     if vim.g.kcnc_enable_treesitter == 1 then
-        table.insert(plugins, {
-            "nvim-treesitter/nvim-treesitter",
-            build = function()
-                local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-                ts_update()
-            end,
-            config = function()
-                require("plugins.treesitter").load()
-            end,
-        })
+        table.insert(plugins, require("plugins.treesitter"))
     end
 
     if vim.g.kcnc_enable_markdown == 1 then
@@ -186,18 +114,7 @@ function M.load()
                 vim.g.vim_markdown_auto_insert_bullets = 0
             end,
         })
-        table.insert(plugins, {
-            "iamcco/markdown-preview.nvim",
-            build = "cd app && yarn install",
-            cmd = "MarkdownPreview",
-            ft = "markdown",
-            config = function()
-                require("plugins.markdown-preview").load()
-            end,
-            init = function()
-                vim.g.mkdp_filetypes = { "markdown" }
-            end,
-        })
+        table.insert(plugins, require("plugins.markdown-preview"))
         table.insert(plugins, {
             "dkarter/bullets.vim",
             ft = "markdown",
