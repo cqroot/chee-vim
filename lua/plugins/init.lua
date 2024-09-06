@@ -95,10 +95,10 @@ function M.load()
         },
 
         {
-            "sbdchd/neoformat",
+            "stevearc/conform.nvim",
             config = function()
-                require("plugins.neoformat").load()
-            end,
+                require("plugins.conform")
+            end
         },
         {
             "numToStr/Comment.nvim",
