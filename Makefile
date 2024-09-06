@@ -2,6 +2,10 @@
 bootstrap:
 	bash '$(CURDIR)/scripts/bootstrap.sh'
 
+.PHONY: check
+check:
+	@python '$(CURDIR)/scripts/check.py'
+
 .PHONY: clean
 clean:
 	rm -rf '$(CURDIR)/config/options.sh'

@@ -17,6 +17,10 @@
           "zsh"
         ],
         "path": "./shell.json"
+      },
+      {
+        "language": "python",
+        "path": "./python.json"
       }
     ]
   }
