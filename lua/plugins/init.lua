@@ -94,6 +94,8 @@ function M.load()
         -- *  Terminal                                                            *
         -- ************************************************************************
         require("plugins.toggleterm"),
+
+        require("plugins.which-key"),
     }
 
     if vim.g.kcnc_enable_treesitter == 1 then

@@ -2,13 +2,11 @@ local M = {}
 
 function M.load()
     local opts = { noremap = true, silent = true }
-    vim.g.mapleader = ";"
 
     -- ************************************************************************
     -- * Navigation                                                           *
     -- ************************************************************************
-    vim.keymap.set("n", "<C-s>", "<CMD>w<CR>")
-    vim.keymap.set("i", "<C-s>", "<CMD>w<CR>")
+    vim.keymap.set({ "n", "i" }, "<C-s>", "<CMD>w<CR>")
     if vim.g.kcnc_enable_navigator == 1 then
         vim.keymap.set({ "n" }, "<M-h>", "<CMD>NavigatorLeft<CR>")
         vim.keymap.set({ "n" }, "<M-l>", "<CMD>NavigatorRight<CR>")
@@ -21,17 +19,6 @@ function M.load()
         vim.api.nvim_set_keymap("n", "<M-k>", "<C-w>k", opts)
         vim.api.nvim_set_keymap("n", "<M-l>", "<C-w>l", opts)
     end
-
-    -- ************************************************************************
-    -- * Buffer                                                               *
-    -- ************************************************************************
-    vim.keymap.set({ "n", "v" }, "J", "<cmd>BufferLineCyclePrev<cr>", opts)
-    vim.keymap.set({ "n", "v" }, "K", "<cmd>BufferLineCycleNext<cr>", opts)
-
-    vim.keymap.set({ "n" }, "<leader>J", "<cmd>BufferLineMovePrev<cr>", opts)
-    vim.keymap.set({ "n" }, "<leader>K", "<cmd>BufferLineMoveNext<cr>", opts)
-
-    vim.keymap.set({ "n", "v" }, "<M-w>", "<cmd>bp|bd #<cr>", opts)
 
     -- ************************************************************************
     -- * LSPs                                                                 *
@@ -74,87 +61,30 @@ function M.load()
         end,
     })
 
-    -- ************************************************************************
-    -- * Others                                                               *
-    -- ************************************************************************
-    -- vim.keymap.set({ "n", "v" }, "<leader>f", require("telescope.builtin").find_files, opts)
-    vim.keymap.set({ "n", "v" }, "<C-p>", function()
-        require("telescope.builtin").find_files({
-            previewer = false,
-            layout_strategy = "vertical",
-            layout_config = {
-                width = 0.5,
-                height = 0.5,
-            },
-        })
-    end, opts)
-    vim.keymap.set({ "n", "v" }, "<leader>g", require("telescope.builtin").live_grep, opts)
-    vim.keymap.set({ "n", "v" }, "<leader>b", require("telescope.builtin").buffers, opts)
-    -- vim.keymap.set({ "n", "v" }, "<leader>h", require("telescope.builtin").help_tags, opts)
-    vim.keymap.set({ "n", "v" }, "<leader>.", "<cmd>luafile $MYVIMRC<cr>", opts)
-
     vim.keymap.set({ "n", "v", "i", "t" }, "<M-cr>", "<cmd>ToggleTerm direction=float<cr>", opts)
 
-    vim.keymap.set({ "n", "v" }, "<M-a>", show_menu, opts)
+    require("which-key").add({
+        { "<leader>sd", "<CMD>Gitsigns diffthis<CR>", desc = "Git diff" },
 
-    vim.keymap.set({ "n" }, "mm", "<Plug>BookmarkToggle <Plug>BookmarkShowAll", opts)
-end
-
-local winid = -1
-
-function show_menu()
-    local Menu = require("nui.menu")
-    local event = require("nui.utils.autocmd").event
-
-    if winid ~= -1 then
-        vim.api.nvim_win_close(winid, true)
-        winid = -1
-        return
-    end
-
-    local menu = Menu({
-        position = "50%",
-        size = {
-            width = 25,
-            height = 5,
+        -- Telescope
+        {
+            "<C-p>",
+            function()
+                require("telescope.builtin").find_files({
+                    previewer = false,
+                    layout_strategy = "vertical",
+                    layout_config = {
+                        width = 0.5,
+                        height = 0.5,
+                    },
+                })
+            end,
+            desc = "Telescope find_files",
         },
-        border = {
-            style = "rounded",
-        },
-        win_options = {
-            winhighlight = "Normal:Normal,FloatBorder:Normal",
-        },
-    }, {
-        lines = {
-            Menu.item("Toggle Explorer"),
-            Menu.item("Toggle Outline"),
-            Menu.item("Git: Diff this"),
-        },
-        max_width = 20,
-        keymap = {
-            focus_next = { "j", "<Down>", "<Tab>" },
-            focus_prev = { "k", "<Up>", "<S-Tab>" },
-            close = { "<Esc>", "<C-c>" },
-            submit = { "<CR>", "<Space>" },
-        },
-        on_close = function()
-            winid = -1
-        end,
-        on_submit = function(item)
-            if item.text == "Toggle Explorer" then
-                vim.cmd({ cmd = "Neotree", args = { "toggle", "show" } })
-            elseif item.text == "Toggle Outline" then
-                vim.cmd({ cmd = "SymbolsOutline" })
-            elseif item.text == "Git: Diff this" then
-                require("gitsigns").diffthis()
-            end
-            winid = -1
-        end,
+        { "<leader>tg", require("telescope.builtin").live_grep, desc = "Telescope live_grep" },
+        { "<leader>tb", require("telescope.builtin").buffers, desc = "Telescope buffers" },
+        { "<leader>tt", require("telescope.builtin").tags, desc = "Telescope tags" },
     })
-
-    -- mount the component
-    menu:mount()
-    winid = menu.winid
 end
 
 return M

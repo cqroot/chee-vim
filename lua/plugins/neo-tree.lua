@@ -6,7 +6,9 @@ return {
         "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
         "MunifTanjim/nui.nvim",
     },
-    cmd = "Neotree",
+    keys = {
+        { "<leader>sf", "<CMD>Neotree toggle show<CR>", mode = { "n", "v" }, desc = "Toggle Neotree" },
+    },
     config = function()
         -- Unless you are still migrating, remove the deprecated commands from v1.x
         vim.g.neo_tree_remove_legacy_commands = 1

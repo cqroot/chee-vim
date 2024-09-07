@@ -1,8 +1,9 @@
 return {
     "hedyhli/outline.nvim",
+    keys = {
+        { "<leader>so", "<CMD>Outline!<CR>", mode = { "n", "v" }, desc = "Toggle Outline" },
+    },
     config = function()
-        vim.keymap.set({ "n", "v" }, "<M-o>", "<cmd>Outline!<CR>", { desc = "Toggle Outline" })
-
         require("outline").setup({
             width = 20,
             autofold_depth = 1,
