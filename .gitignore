@@ -4,3 +4,7 @@ lua/custom_options.lua
 
 generated_*
 config/options.sh
+
+# Python
+*.pyc
+__pycache__/

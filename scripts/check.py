@@ -2,55 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import print_function
-import re
-import shlex
-import subprocess
-import sys
-
-
-PY2 = sys.version_info[0] == 2
-PY3 = sys.version_info[0] == 3
-PY34 = sys.version_info[0:2] >= (3, 4)
-if not PY34:
-    FileNotFoundError = OSError
-
-
-class Color(object):
-    @staticmethod
-    def fg_red(s):
-        return "\033[31m%s\033[0m" % s
-
-    @staticmethod
-    def fg_green(s):
-        return "\033[32m%s\033[0m" % s
-
-    @staticmethod
-    def fg_yellow(s):
-        return "\033[33m%s\033[0m" % s
-
-    @staticmethod
-    def fg_blue(s):
-        return "\033[34m%s\033[0m" % s
-
-
-def run_command(command):
-    process = subprocess.Popen(
-        shlex.split(command), stdout=subprocess.PIPE, stderr=subprocess.PIPE
-    )
-    out, err = process.communicate()
-    ret = process.poll()
-
-    if ret != 0:
-        return ret, err.decode("utf-8") if sys.version_info[0] == 3 else err
-
-    return ret, out.decode("utf-8") if sys.version_info[0] == 3 else out
-
-
-def parse_version(s):
-    try:
-        return re.findall("[0-9]+\\.[0-9]+\\.?[0-9]*", s)[0]
-    except IndexError:
-        return "unknown"
+from comm.color import Color
+from comm.utils import run_command, parse_version
 
 
 class Executable(object):
