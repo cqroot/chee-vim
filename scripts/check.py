@@ -16,6 +16,11 @@ class Executable(object):
 
         try:
             ret, out = run_command(version_cmd)
+
+            if ret == -1:
+                self.__error = "Command not found"
+                return
+
             out = out.splitlines()[0].rstrip("\n")
 
             if ret != 0:
@@ -75,6 +80,8 @@ def check_dependencies():
         Executable("python", "python --version"),
         Executable("git", "git --version"),
         Executable("ripgrep", "rg --version"),
+        Executable("ctags", "ctags --version"),
+        Executable("cscope", "cscope --version"),
     ]
     check_executable(title, dependencies)
 

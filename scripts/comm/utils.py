@@ -20,6 +20,9 @@ def run_command(command):
     if ret != 0:
         return ret, err.decode("utf-8") if PY3 else err
 
+    if not out.strip():
+        return ret, err.decode("utf-8") if PY3 else err
+
     return ret, out.decode("utf-8") if PY3 else out
 
 
