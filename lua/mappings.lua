@@ -84,6 +84,8 @@ function M.load()
         { "<leader>tg", require("telescope.builtin").live_grep, desc = "Telescope live_grep" },
         { "<leader>tb", require("telescope.builtin").buffers, desc = "Telescope buffers" },
         { "<leader>tt", require("telescope.builtin").tags, desc = "Telescope tags" },
+
+        { "<leader>ch", 'yiw:CsStackView open down <C-r>"<CR>', desc = "Show Call Hierarchy" },
     })
 end
 
