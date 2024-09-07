@@ -1,8 +1,9 @@
 return {
-    "simrat39/symbols-outline.nvim",
-    cmd = "SymbolsOutline",
+    "hedyhli/outline.nvim",
     config = function()
-        require("symbols-outline").setup({
+        vim.keymap.set({ "n", "v" }, "<M-o>", "<cmd>Outline!<CR>", { desc = "Toggle Outline" })
+
+        require("outline").setup({
             width = 20,
             autofold_depth = 1,
             keymaps = { -- These keymaps can be a string or a table for multiple keys

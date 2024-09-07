@@ -39,7 +39,7 @@ function M.load()
 
         -- Panels
         require("plugins.neo-tree"),
-        require("plugins.symbols-outline"),
+        require("plugins.outline"),
         require("plugins.telescope"),
 
         -- Appearance
