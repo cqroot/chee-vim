@@ -7,11 +7,12 @@ from comm.utils import run_command, parse_version
 
 
 class Executable(object):
-    def __init__(self, name, version_cmd):
+    def __init__(self, name, version_cmd, required=False):
         self.__name = name
         self.__version = "unknown"
         self.__is_exist = False
         self.__error = ""
+        self.__required = required
 
         try:
             ret, out = run_command(version_cmd)
@@ -38,34 +39,24 @@ class Executable(object):
     def error(self):
         return self.__error
 
+    def required(self):
+        return self.__required
+
 
 def check_executable_version(executable):
+    sname = "[%s]" % Color.fg_cyan(executable.name())
+    sok = Color.fg_green("OK")
+    serr = Color.fg_red("ERROR") if executable.required() else Color.fg_yellow("WARN")
+
     if executable.error():
-        print(
-            "- %s [%s]: %s"
-            % (
-                Color.fg_red("ERROR"),
-                Color.fg_yellow(executable.name()),
-                executable.error(),
-            )
-        )
+        print("- %s %s: %s" % (serr, sname, executable.error()))
         return
 
     if not executable.is_exist():
-        print(
-            "- %s [%s]: not ready"
-            % (Color.fg_red("ERROR"), Color.fg_yellow(executable.name()))
-        )
+        print("- %s %s: not ready" % (serr, sname))
         return
 
-    print(
-        "- %s [%s]: %s"
-        % (
-            Color.fg_green("OK"),
-            Color.fg_yellow(executable.name()),
-            parse_version(executable.version()),
-        )
-    )
+    print("- %s %s: %s" % (sok, sname, parse_version(executable.version())))
 
 
 def check_executable(title, executables):

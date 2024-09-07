@@ -10,3 +10,9 @@ git clone https://github.com/cqroot/keithnvim ~/.config/nvim
 cd ~/.config/nvim
 make bootstrap
 ```
+
+## Check Dependencies
+
+```bash
+make check
+```
