@@ -5,11 +5,11 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 
 vim.g.mapleader = ";"
 
-require("options").load()
-require("plugins").load()
-require("plugins.cmp").load()
-require("commands").load()
-require("mappings").load()
+require("options")
+require("plugins")
+require("plugins.cmp")
+require("commands")
+require("mappings")
 
 -- "onedark" "zenbones" "ayu-mirage" "vscode"
 pcall(vim.cmd, "colorscheme vscode")
