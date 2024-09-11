@@ -16,20 +16,18 @@ end
 init_lazy()
 
 local plugins = {
-    {
-        "rebelot/kanagawa.nvim",
-    },
-    {
-        "Mofiqul/vscode.nvim",
-    },
+    -- {
+    --     "rebelot/kanagawa.nvim",
+    -- },
+    -- {
+    --     "Mofiqul/vscode.nvim",
+    -- },
     {
         "navarasu/onedark.nvim",
         config = function()
             require("onedark").setup({
-                -- style = "darker",
-                -- style = "cool",
-                style = "warmer",
-                -- dark, darker, cool, deep, warm, warmer, light
+                style = "darker",
+                -- style = "warmer",
             })
         end,
     },

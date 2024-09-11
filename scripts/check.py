@@ -80,6 +80,7 @@ def check_dependencies():
         Executable("python", "python --version"),
         Executable("git", "git --version"),
         Executable("ripgrep", "rg --version"),
+        Executable("lazygit", "lazygit --version"),
         Executable("ctags", "ctags --version"),
         Executable("cscope", "cscope --version"),
     ]

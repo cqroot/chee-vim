@@ -83,4 +83,6 @@ require("which-key").add({
     { "<leader>tt", require("telescope.builtin").tags, desc = "Telescope tags" },
 
     { "<leader>ch", 'yiw:CsStackView open down <C-r>"<CR>', desc = "Show Call Hierarchy" },
+    -- terminal
+    { "<leader>sg", require("plugins.lazygit").toggle, desc = "Toogle Lazygit" },
 })

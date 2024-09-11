@@ -12,4 +12,7 @@ require("commands")
 require("mappings")
 
 -- "onedark" "zenbones" "ayu-mirage" "vscode"
-pcall(vim.cmd, "colorscheme vscode")
+-- pcall(vim.cmd, "colorscheme vscode")
+-- pcall(vim.cmd, "colorscheme kanagawa-dragon")
+pcall(vim.cmd, "colorscheme onedark")
+
