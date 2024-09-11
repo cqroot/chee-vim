@@ -40,6 +40,7 @@ function M.load()
         -- Panels
         require("plugins.neo-tree"),
         require("plugins.outline"),
+        require("plugins.aerial"),
         require("plugins.telescope"),
 
         -- Appearance
