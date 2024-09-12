@@ -40,6 +40,8 @@ local plugins = {
 
     -- Editor
     require("plugins.mini-cursorword"),
+    require("plugins.mini-animate"),
+    require("plugins.mini-align"),
 
     -- Appearance
     require("plugins.lualine"),
