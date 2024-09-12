@@ -42,6 +42,7 @@ local plugins = {
     require("plugins.mini-cursorword"),
     require("plugins.mini-animate"),
     require("plugins.mini-align"),
+    require("plugins.hlchunk"),
 
     -- Appearance
     require("plugins.lualine"),
