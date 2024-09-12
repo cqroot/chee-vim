@@ -38,6 +38,9 @@ local plugins = {
     require("plugins.aerial"),
     require("plugins.telescope"),
 
+    -- Editor
+    require("plugins.mini-cursorword"),
+
     -- Appearance
     require("plugins.lualine"),
     require("plugins.bufferline"),

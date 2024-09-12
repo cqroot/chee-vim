@@ -16,3 +16,5 @@ require("mappings")
 -- pcall(vim.cmd, "colorscheme kanagawa-dragon")
 pcall(vim.cmd, "colorscheme onedark")
 
+vim.api.nvim_set_hl(0, "MiniCursorword", { bg = "#3b4261" })
+vim.api.nvim_set_hl(0, "MiniCursorwordCurrent", { bg = "#3b4261" })
