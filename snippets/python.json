@@ -1,7 +1,7 @@
 {
   "Shebang": {
     "prefix": "shebang",
-    "body": ["#!/usr/bin/env python", "# -*- coding: utf-8 -*-"],
+    "body": ["#!/usr/bin/env python", "# -*- coding: utf-8 -*-", "", ""],
     "description": "Shebang line for the first python in PATH"
   }
 }
