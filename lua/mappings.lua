@@ -82,6 +82,7 @@ require("which-key").add({
     { "<leader>ts", require("telescope.builtin").grep_string, desc = "Telescope grep_string" },
     { "<leader>tb", require("telescope.builtin").buffers, desc = "Telescope buffers" },
     { "<leader>tt", require("telescope.builtin").tags, desc = "Telescope tags" },
+    { "<leader>tr", require("telescope.builtin").registers, desc = "Telescope registers" },
 
     { "<leader>ch", 'yiw:CsStackView open down <C-r>"<CR>', desc = "Show Call Hierarchy" },
     -- terminal
