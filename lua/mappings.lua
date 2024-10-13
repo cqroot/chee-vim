@@ -87,4 +87,7 @@ require("which-key").add({
     { "<leader>ch", 'yiw:CsStackView open down <C-r>"<CR>', desc = "Show Call Hierarchy" },
     -- terminal
     { "<leader>sg", require("plugins.lazygit").toggle, desc = "Toogle Lazygit" },
+    { "<M-o>", "<CMD>ClangdSwitchSourceHeader<CR>", desc = "Clangd Switch Source Header" },
+
+    { "<leader>it", '"=strftime("%Y-%m-%d %H:%M:%S")<CR>P', desc = "Insert Current Time" },
 })
